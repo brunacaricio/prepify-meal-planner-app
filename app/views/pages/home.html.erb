@@ -1,2 +1,18 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container mt-3">
+  <div class="row">
+
+    <div class="col-12 col-lg-6">
+      <p>Hello, <b><%= current_user %></b>!</p>
+      <p>What are you cooking this week?</p>
+    </div>
+
+    <div class="col-12 col-lg-4">
+      <h2>Recipes</h2>
+      <ul>
+        <% @recipes.each do |recipe| %>
+          <li><%= link_to recipe.title, recipe_path(recipe) %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
