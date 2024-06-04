@@ -1,10 +1,12 @@
 <div class="container mt-3">
-  <div class="row">
+  <div class="row justify-content-center">
 
-    <div class="col-12 col-lg-6">
+    <div class="col-12 col-lg-4">
       <p>Hello, <b><%= current_user %></b>!</p>
       <p>What are you cooking this week?</p>
     </div>
+
+    <%= render "shared/search" %>
 
     <div class="col-12 col-lg-4">
       <h2>Recipes</h2>
