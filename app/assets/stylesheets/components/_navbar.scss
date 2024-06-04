@@ -10,3 +10,11 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.fixed-navbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: lightgray;
+  z-index: 999;
+}
