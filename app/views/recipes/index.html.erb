@@ -1,42 +1,28 @@
- <div class="container">
+<div class="search-container">
 
-        <div class="row">
-            <div class="col-sm-12">
-                <input type="text" class="form-control" placeholder="Search recipes">
-            </div>
-        </div>
+  <div class="row">
+      <div class="col-sm-12">
+          <input type="text" class="form-control" placeholder="Search recipes">
+      </div>
+  </div>
 
-        <div class="row">
-            <div class="col-sm-12">
-                <h5>Recent Search</h5>
-            </div>
-        </div>
+  <div class="row">
+      <div class="col-sm-12">
+          <h5 class ="pt-4 pb-4"><b>Recent Search</b></h5>
+      </div>
+  </div>
 
-        <div class="row">
-            <div class="col-6">
-                <div class="card">
-                    <img src="https://www.volim-meso.hr/wordpress/wp-content/uploads/2023/04/spare-ribs-IG.jpg" class="card-img-top" alt="Traditional spare ribs">
-                    <div class="card-content">
-                        <h6 class="card-title">Traditional spare ribs</h6>
-                        <p class="card-text">Category</p>
-                    </div>
-                    <button class="add-button">+</button>
+  <div class = "search-grid">
+          <% @recipes.each do |recipe| %>
+            <div class="card">
+                <img src="<%= recipe.image %>" class="card-image" alt="<%= recipe.title %>">
+                <div class="card-content">
+                    <%= link_to recipe.title, recipe_path(recipe), class: "card-title" %>
+                    <p class="card-text"><%= recipe.category.split(', ')[0] %></p>
                 </div>
+                <button class="add-button">+</button>
             </div>
+          <% end %>
+  </div>
 
-            <div class="col-6">
-                <div class="card">
-                    <img src="https://www.volim-meso.hr/wordpress/wp-content/uploads/2023/04/spare-ribs-IG.jpg" class="card-img-top" alt="Lamb chops with fruity couscous and mint">
-                    <div class="card-content">
-                        <h6 class="card-title">Lamb chops with fruity couscous and mint</h6>
-                        <p class="card-text">Category</p>
-                    </div>
-                    <button class="add-button">+</button>
-                </div>
-            </div>
-
-        </div>
-        <!-- Add more rows for more recipe cards -->
-    </div>
-
-  </body>
+</div>

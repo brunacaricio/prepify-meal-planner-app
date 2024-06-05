@@ -10,3 +10,22 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+$gray: rgb(240, 240, 240);
+$orange: rgb(228, 158, 29);
+
+body {
+  background-color: $gray;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 20px;
+}
+
+.search-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}

@@ -1,6 +1,6 @@
 .card {
-  width:  150px; /* Adjust as needed */
-  height: px;
+  width:  100%;
+  height: 150px;
   border-radius: 18px;
   overflow: hidden;
   position: relative;
@@ -8,14 +8,13 @@
   font-family: 'Poppins', sans-serif;
 }
 
-.card-img-top {
+.card-image {
   width: 100%;
   height: auto;
 }
 
 .card-content {
   font-size: 11px;
-  height: 80px;
   padding: 7px;
   background: linear-gradient(to bottom, #00000010 1%, #000000 90% );
   color: white;
