@@ -1,70 +1,74 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
-}
+// .navbar-lewagon {
+//   justify-content: space-between;
+//   background: white;
+// }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
+// .navbar-lewagon .navbar-collapse {
+//   flex-grow: 0;
+// }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
-}
+// .navbar-lewagon .navbar-brand img {
+//   width: 40px;
+// }
 
-.fixed-navbar {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 10%;
-  background: white;
-  z-index: 999;
-}
 
-.nav-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-
-  margin: 0 10px;
-  transition: all 0.3s ease-in-out;
-}
-
-.nav-link i {
-  font-size: 24px;
-  padding: 10px;
-}
-
-.active {
-  color: $orange;
-}
-
-.active::before {
-  color: $orange;
-}
-
-.inactive {
-  color: gray;
-}
-
-.active::after {
-  color: gray;
-}
-
-.fa-cart-shopping {
-  border-radius: 50%;
-  background-color: $orange;
-  color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  font-size: 1.2em;
-  position: relative;
-  top: -10px;
-}
+/* Mobile styles */
 
 @media only screen and (max-device-width: 960px) {
+  .fixed-navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 10%;
+    background: white;
+    z-index: 999;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+
+    margin: 0 10px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .nav-link i {
+    font-size: 24px;
+    padding: 10px;
+  }
+
+  .active {
+    color: $orange;
+  }
+
+  .active::before {
+    color: $orange;
+  }
+
+  .inactive {
+    color: gray;
+  }
+
+  .active::after {
+    color: gray;
+  }
+
+  .fa-cart-shopping {
+    border-radius: 50%;
+    border-color: $orange;
+    background-color: $orange;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 1.2em;
+    position: relative;
+    top: -10px;
+  }
+
 
 }
