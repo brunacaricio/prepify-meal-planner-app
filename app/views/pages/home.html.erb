@@ -6,7 +6,7 @@
         <div class="col-2">
           <% if user_signed_in? %>
             <% if current_user.photo.attached? %>
-              <%= cl_image_tag current_user.photo, class: "avatar" %>
+              <%= cl_image_tag current_user.photo.key, class: "avatar" %>
             <% else %>
               <i class="fa-solid fa-bowl-food justify-content-center"></i>
             <% end %>
@@ -29,15 +29,31 @@
 
     <div class="col-12 col-lg-8 text-center mb-3">
       <p><b>Today</b></p>
+       <div class="add-recipe-card">
+        <%= link_to recipes_path, class: "add-recipe-link" do %>
+          <div class="add-recipe-icon">
+            <i class="fa-solid fa-plus" style="font-size: 36px;"></i>
+          </div>
+        <% end %>
+      </div>
     </div>
 
     <div class="col-12 col-lg-6 justify-content-center">
       <p><b>Recipes</b></p>
-      <ul>
-        <% @recipes.each do |recipe| %>
-          <li><%= link_to recipe.title, recipe_path(recipe) %></li>
-        <% end %>
-      </ul>
+      <div class="row">
+            <div class="col-6">
+              <% @recipes.each do |recipe| %>
+                <div class="card">
+                    <img src="<%= recipe.image %>" class="card-image" alt="<%= recipe.title %>">
+                    <div class="card-content">
+                        <%= link_to recipe.title, recipe_path(recipe), class: "card-title" %>
+                        <p class="card-text"><%= recipe.category.split(', ')[0] %></p>
+                    </div>
+                    <button class="add-button">+</button>
+                </div>
+              <% end %>
+            </div>
+        </div>
     </div>
   </div>
 </div>
