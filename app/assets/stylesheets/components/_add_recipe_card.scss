@@ -1,29 +1,16 @@
-.add-recipe-card {
-  display: inline-block;
-  width: 80px;
-  height: 80px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.add-recipe-card:hover {
-  background-color: #f7f7f7;
-}
-
-.add-recipe-icon {
+.bigcard {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  font-size: 36px;
-  color: #666;
+}
+.homecard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 250px;
+  background-color: white;
 }
 
-.add-recipe-link {
-  text-decoration: none;
-  color: inherit;
-}

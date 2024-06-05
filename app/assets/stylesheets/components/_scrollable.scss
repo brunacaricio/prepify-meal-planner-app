@@ -1,0 +1,10 @@
+.recipe-cards {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.card {
+  margin: 10px; /* add some margin between cards */
+  flex: 0 0 170px; /* set a fixed width for each card */
+}
