@@ -18,3 +18,19 @@
   background: lightgray;
   z-index: 999;
 }
+
+.fixed-navbar .active {
+  fill: orangered;
+  border-color: ;
+}
+
+.fixed-navbar .inactive {
+  fill: ;
+  border-color: ;
+}
+
+@media only screen and (max-device-width: 960px) {
+  . {
+    : ;
+  }
+}
