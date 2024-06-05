@@ -1,0 +1,24 @@
+
+<div class ="favorite-container">
+
+  <H2><b>Favorite recipes</b></H2>
+
+ <%= render "shared/search" %>
+
+  <div class="favorite-grid">
+
+    <% @recipes.each do |recipe| %>
+
+      <div class="showcard">
+        <img src="<%= recipe.image %>" class="card-image" alt="<%= recipe.title %>">
+        <div class="card-content">
+          <%= link_to recipe.title, recipe_path(recipe), class: "card-title" %>
+          <p class="card-text"><%= recipe.category.split(', ')[0] %></p>
+        </div>
+        <button class="add-button">+</button>
+      </div>
+    <% end %>
+
+  </div>
+
+</div>

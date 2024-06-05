@@ -29,3 +29,32 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
+
+.indexpage-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back-icon {
+  margin-right: 40px;
+  text-decoration: none;
+  font-size: 24px;
+}
+h3 {
+  margin: 0;
+}
+
+.favorite-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 15px;
+}
+
+.favorite-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 20px;
+}
