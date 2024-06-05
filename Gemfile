@@ -76,3 +76,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem 'axlsx', '~> 2.0', '>= 2.0.1'
+gem "roo"
