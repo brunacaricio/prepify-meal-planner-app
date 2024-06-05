@@ -112,7 +112,6 @@ puts 'Now Importing with the api'
 
 
 array_of_ids =[
-  639203,639234,639167
 ]
 
 
