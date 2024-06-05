@@ -13,9 +13,11 @@
 
 $gray: rgb(240, 240, 240);
 $orange: rgb(228, 158, 29);
+$dark-gray: rgb(84, 84, 84);
 
 body {
   background-color: $gray;
+  font-family: $poppins;
 }
 
 .search-container {

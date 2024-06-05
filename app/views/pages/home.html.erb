@@ -1,4 +1,4 @@
-<div class="container m-3 p-3">
+<div class="container mt-3">
   <div class="row justify-content-center">
 
     <div class="col-12 col-lg-4">
@@ -27,12 +27,12 @@
 
     <%= render "shared/search" %>
 
-    <div class="col-12 col-lg-8 text-center mb-3">
+    <div class="bigcard col-12 col-lg-8 text-center mb-3">
       <p><b>Today</b></p>
-       <div class="add-recipe-card">
-        <%= link_to recipes_path, class: "add-recipe-link" do %>
-          <div class="add-recipe-icon">
-            <i class="fa-solid fa-plus" style="font-size: 36px;"></i>
+      <div class="homecard add-recipe-card">
+        <%= link_to recipes_path do %>
+          <div>
+            <i class="fa-solid fa-plus icon-orange" style="font-size: 36px;"></i>
           </div>
         <% end %>
       </div>
@@ -41,19 +41,21 @@
     <div class="col-12 col-lg-6 justify-content-center">
       <p><b>Recipes</b></p>
       <div class="row">
-            <div class="col-6">
-              <% @recipes.each do |recipe| %>
-                <div class="card">
-                    <img src="<%= recipe.image %>" class="card-image" alt="<%= recipe.title %>">
-                    <div class="card-content">
-                        <%= link_to recipe.title, recipe_path(recipe), class: "card-title" %>
-                        <p class="card-text"><%= recipe.category.split(', ')[0] %></p>
-                    </div>
-                    <button class="add-button">+</button>
+        <div class="col-12">
+          <div class="recipe-cards">
+            <% @recipes.each do |recipe| %>
+              <div class="card">
+                <img src="<%= recipe.image %>" class="card-image" alt="<%= recipe.title %>">
+                <div class="card-content">
+                  <%= link_to recipe.title, recipe_path(recipe), class: "card-title" %>
+                  <p class="card-text"><%= recipe.category.split(', ')[0] %></p>
                 </div>
-              <% end %>
-            </div>
+                <button class="add-button">+</button>
+              </div>
+            <% end %>
+          </div>
         </div>
+      </div>
     </div>
   </div>
 </div>

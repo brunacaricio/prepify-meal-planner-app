@@ -5,8 +5,6 @@ require "roo"
 puts 'cleaning'
 
 Ingredient.destroy_all
-
-
 RecipeIngredient.destroy_all
 Recipe.destroy_all
 
