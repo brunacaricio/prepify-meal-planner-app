@@ -12,25 +12,58 @@
 }
 
 .fixed-navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   position: fixed;
   bottom: 0;
   width: 100%;
-  background: lightgray;
+  height: 10%;
+  background: white;
   z-index: 999;
 }
 
-.fixed-navbar .active {
-  fill: orangered;
-  border-color: ;
+.nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 0 10px;
+  transition: all 0.3s ease-in-out;
 }
 
-.fixed-navbar .inactive {
-  fill: ;
-  border-color: ;
+.nav-link i {
+  font-size: 24px;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: #ffffff;
+}
+
+.nav-link .fa-cart-shopping {
+  background-color: $orange;
+  color: #ffffff;
+}
+
+.active {
+  color: $orange;
+}
+
+.active::before {
+  color: $orange;
+}
+
+.inactive {
+  color: gray;
+}
+
+.active::after {
+  color: gray;
 }
 
 @media only screen and (max-device-width: 960px) {
-  . {
-    : ;
-  }
+
 }

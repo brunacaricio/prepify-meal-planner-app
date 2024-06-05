@@ -1,15 +1,38 @@
-<div class="container mt-3">
+<div class="container m-3 p-3">
   <div class="row justify-content-center">
 
     <div class="col-12 col-lg-4">
-      <p>Hello, <b><%= current_user %></b>!</p>
-      <p>What are you cooking this week?</p>
+      <div class="row">
+        <div class="col-2">
+          <% if user_signed_in? %>
+            <% if current_user.photo.attached? %>
+              <%= cl_image_tag current_user.photo, class: "avatar" %>
+            <% else %>
+              <i class="fa-solid fa-bowl-food justify-content-center"></i>
+            <% end %>
+          <% else %>
+            <i class="fa-solid fa-bowl-food justify-content-center"></i>
+          <% end %>
+        </div>
+        <div class="col-10">
+          <% if user_signed_in? %>
+            <h4>Hello, <b><%= current_user.username %></b>!</h4>
+          <% else %>
+            <h4>Hello, you!</h4>
+          <% end %>
+          <p>What are you cooking this week?</p>
+        </div>
+      </div>
     </div>
 
     <%= render "shared/search" %>
 
-    <div class="col-12 col-lg-4">
-      <h2>Recipes</h2>
+    <div class="col-12 col-lg-8 text-center mb-3">
+      <p><b>Today</b></p>
+    </div>
+
+    <div class="col-12 col-lg-6 justify-content-center">
+      <p><b>Recipes</b></p>
       <ul>
         <% @recipes.each do |recipe| %>
           <li><%= link_to recipe.title, recipe_path(recipe) %></li>
