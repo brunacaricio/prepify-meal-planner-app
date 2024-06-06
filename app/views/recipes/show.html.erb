@@ -1,6 +1,6 @@
 <div class="col-12 col-lg-4">
   <div class="showcard">
-    <img src="<%= @recipe.image %>" class="card-image" alt="<%= recipe.title %>">
+    <img src="<%= @recipe.image %>" class="card-image" alt="<%= @recipe.title %>">
       <%= @recipe.category %>
       <%= @recipe.total_time %>
       <i id="plus-button"  class="fa-solid fa-circle-plus" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -44,10 +44,10 @@
       <div class="ingredients-card">
         <button class="btn btn-outline-secondary"> Ingredients
         </button>
-        <% @recipe.recipe_ingredients.each do |ingredient| %>
-          <li><%= ingredient.ingredient.name.capitalize %><%= ingredient.quantity %><%= ingredient.unit %></li>
+        <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
+          <li><%= recipe_ingredient.quantity %>
+          <%= recipe_ingredient.unit %> <%= recipe_ingredient.ingredient.name %></li>
           <% end %>
-
       </div>
 
       <div class="instructions-card">
