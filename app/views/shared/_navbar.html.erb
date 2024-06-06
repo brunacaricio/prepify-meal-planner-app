@@ -13,20 +13,21 @@
       <% end %>
     </li>
       <li>
-    <%= link_to '#', class:"nav-link" do %>
+      <%= link_to '#', class:"nav-link" do %>
       <i class="<%= 'fa-solid fa-cart-shopping active' if current_page?('#')%>
         <%= 'fa-solid fa-cart-shopping inactive' unless current_page?('#') %>"%>
       </i>
       <% end %>
     </li>
     <li>
-    <%= link_to '#', class:"nav-link" do %>
+      <%= link_to '#', class:"nav-link" do %>
       <i class="<%= 'fa-solid fa-calendar-days active' if current_page?('#')%>
         <%= 'fa-solid fa-calendar-days inactive' unless current_page?('#') %>"%>
       </i>
       <% end %>
     </li>
-  <li><%= link_to '#', class:"nav-link" do %>
+    <li>
+    <%= link_to '#', class:"nav-link" do %>
       <i class="<%= 'fa-solid fa-user active' if current_page?('#') %>
         <%= 'fa-solid fa-user inactive' unless current_page?('#') %>"%>
       </i>

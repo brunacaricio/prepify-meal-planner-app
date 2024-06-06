@@ -1,0 +1,42 @@
+<div class="col-12 col-lg-4">
+
+    <%# image with category tag <%= @recipe.category %>
+    <%# + time to prep <%= @recipe.total_time %>
+    <%# + add to favorite button %>
+
+  <i id="plus-button"  class="fa-solid fa-circle-plus" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  </i>
+
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Where do you want to add this recipe?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="button-container">
+          <button class="btn btn-outline-primary d-flex justify-content-center mx-auto mt-3 p-1"> My Favorites <i class="<%='fa-solid fa-heart p-1'%>"%></i></button>
+          <hr>
+          <button class="btn btn-outline-primary d-flex justify-content-center mx-auto mb-3 p-1"> My Calendar <i class="<%='fa-solid fa-calendar-days p-1'%>"%></i></button>
+         
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="show-recipe-info">
+    <h4 class= "pb-3 pt-1"><%= @recipe.title %></h4>
+
+            <h6><b>Category: </b></h6>
+
+
+
+
+  </div>
+
+
+</div>
