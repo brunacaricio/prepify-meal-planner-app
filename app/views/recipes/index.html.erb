@@ -20,7 +20,7 @@
                     <%= link_to recipe.title, recipe_path(recipe), class: "card-title" %>
                     <p class="card-text"><%= recipe.category.split(', ')[0] %></p>
                 </div>
-                <button class="add-button">+</button>
+                <%= image_tag 'plus.svg', class: "add-button" %>
             </div>
           <% end %>
   </div>
