@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_05_115117) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_06_101751) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,11 +51,43 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_05_115117) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "grocery_list_items", force: :cascade do |t|
+    t.integer "total_amount"
+    t.boolean "bought"
+    t.bigint "grocery_list_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "planned_meal_id"
+    t.bigint "recipe_ingredient_id"
+    t.index ["grocery_list_id"], name: "index_grocery_list_items_on_grocery_list_id"
+    t.index ["planned_meal_id"], name: "index_grocery_list_items_on_planned_meal_id"
+    t.index ["recipe_ingredient_id"], name: "index_grocery_list_items_on_recipe_ingredient_id"
+  end
+
+  create_table "grocery_lists", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "start_date"
+    t.date "end_date"
+    t.index ["user_id"], name: "index_grocery_lists_on_user_id"
+  end
+
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.string "aisle"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "planned_meals", force: :cascade do |t|
+    t.date "date"
+    t.bigint "user_id", null: false
+    t.bigint "recipe_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_planned_meals_on_recipe_id"
+    t.index ["user_id"], name: "index_planned_meals_on_user_id"
   end
 
   create_table "recipe_ingredients", force: :cascade do |t|
@@ -102,6 +134,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_05_115117) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "favorites", "recipes"
   add_foreign_key "favorites", "users"
+  add_foreign_key "grocery_list_items", "grocery_lists"
+  add_foreign_key "grocery_list_items", "planned_meals"
+  add_foreign_key "grocery_list_items", "recipe_ingredients"
+  add_foreign_key "grocery_lists", "users"
+  add_foreign_key "planned_meals", "recipes"
+  add_foreign_key "planned_meals", "users"
   add_foreign_key "recipe_ingredients", "ingredients"
   add_foreign_key "recipe_ingredients", "recipes"
 end
