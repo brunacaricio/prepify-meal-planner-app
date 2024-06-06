@@ -3,10 +3,14 @@ require "open-uri"
 require "roo"
 
 puts 'cleaning'
-
+GroceryListItem.destroy_all
+GroceryList.destroy_all
+PlannedMeal.destroy_all
+User.destroy_all
 Ingredient.destroy_all
 RecipeIngredient.destroy_all
 Recipe.destroy_all
+
 
 
 puts "Starting to generate"
@@ -176,5 +180,17 @@ array_of_ids.each do |id|
   end
   puts "one recipe done"
 end
+
+
+
+puts 'generating a user'
+
+user = User.create!(username: "ObamaUSA", email: "obama@usa.com", password: "123456")
+date = Time.now
+3.times do
+  recipe = Recipe.last
+  PlannedMeal.create!(recipe: recipe, user_id: user.id, date: date)
+end
+
 
 puts "done :)"

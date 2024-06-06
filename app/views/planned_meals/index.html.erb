@@ -1,8 +1,18 @@
 <h1>MY CALENDAR</h1>
-<% if planned_meals.length == 0 %>
+<% if @planned_meals.empty? %>
   <p>Add your first favorite (Probably should redirect to recipes) </p>
 <% else  %>
-  <% @planned_meals.each do |planned| %>
-  <%= @planned_meal.recipe.title %>
+
+
+  <% (0..6).each do |day| %>
+  <h4><%= Date.today + day %></h4>
+    <% group = @planned_meals.where(date: Date.today + day) %>
+    <% if group.empty? %>
+      <p>Add a recipe For this day ! </p>
+    <% else %>
+      <% group.each do |planned| %>
+        <p>On <%= Date.today + day %> you will eat <%= planned.recipe.title %></p>
+      <% end %>
+    <% end %>
   <% end %>
 <% end %>
