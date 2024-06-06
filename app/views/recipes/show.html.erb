@@ -17,8 +17,16 @@
         <div class="button-container">
           <button class="btn btn-outline-primary d-flex justify-content-center mx-auto mt-3 p-1"> My Favorites <i class="<%='fa-solid fa-heart p-1'%>"%></i></button>
           <hr>
-          <button class="btn btn-outline-primary d-flex justify-content-center mx-auto mb-3 p-1"> My Calendar <i class="<%='fa-solid fa-calendar-days p-1'%>"%></i></button>
-         
+          <%= simple_form_for [@recipe, @planned_meal] do |f| %>
+            <div class="row">
+              <div class="col-md-6">
+                <%= f.input :date, as: :string, input_html: { id: "date", data: { controller: "datepicker" }, class: "form-control" }, label: false %>
+              </div>
+              <div class="col-md-6">
+                <%= f.button :submit, "Add to my Calendar", class: "btn btn-outline-primary d-flex justify-content-center mx-auto mt-3 p-1" %>
+              </div>
+            </div>
+          <% end %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

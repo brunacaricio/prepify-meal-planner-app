@@ -1,4 +1,5 @@
 <nav class="fixed-navbar">
+
   <ul class="nav">
     <li><%= link_to root_path, class:"nav-link" do %>
       <i class="<%= 'fa-solid fa-house active' if current_page?(root_path) %>
@@ -20,9 +21,9 @@
       <% end %>
     </li>
     <li>
-      <%= link_to '#', class:"nav-link" do %>
-      <i class="<%= 'fa-solid fa-calendar-days active' if current_page?('#')%>
-        <%= 'fa-solid fa-calendar-days inactive' unless current_page?('#') %>"%>
+      <%= link_to planned_meals_path, class:"nav-link" do %>
+      <i class="<%= 'fa-solid fa-calendar-days active' if current_page?(planned_meals_path)%>
+        <%= 'fa-solid fa-calendar-days inactive' unless current_page?(planned_meals_path)%>"%>
       </i>
       <% end %>
     </li>
