@@ -1,9 +1,25 @@
+.parent-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.row {
+  width: 100%;
+  margin: 0;
+}
+
 .bigcard {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 .homecard {
   display: flex;
   flex-direction: column;
@@ -13,4 +29,3 @@
   height: 250px;
   background-color: white;
 }
-
