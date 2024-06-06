@@ -1,0 +1,20 @@
+.card-category {
+  display: inline-block;
+  font-size: 14px;
+  color: #EA9F0E;
+  font-weight: bold;
+  background-color: white;
+  border: none;
+  margin: 5px;
+  padding: 10px 15px;
+  border: 1px solid #EA9F0E;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.card-category:hover {
+  background-color: #f7f7f7;
+}
+.hidden {
+  display: none;
+}
