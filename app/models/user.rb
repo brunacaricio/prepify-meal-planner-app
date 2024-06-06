@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :favorites
+  has_many :grocery_lists
   has_one_attached :photo
 
   validates :username, presence: true, uniqueness: true
