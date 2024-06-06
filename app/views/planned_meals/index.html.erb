@@ -1,0 +1,8 @@
+<h1>MY CALENDAR</h1>
+<% if planned_meals.length == 0 %>
+  <p>Add your first favorite (Probably should redirect to recipes) </p>
+<% else  %>
+  <% @planned_meals.each do |planned| %>
+  <%= @planned_meal.recipe.title %>
+  <% end %>
+<% end %>
