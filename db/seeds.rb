@@ -113,12 +113,11 @@ puts 'Now Importing with the api'
 
 
 
-array_of_ids =[
-]
+array_of_ids =[633352, 1697739, 637285, 949421, 648974, 511748, 511707, 642372, 645711, 656723, 660406, 656820, 658703, 639413, 1505411, 986003, 652635, 664017, 645812, 713957, 627987, 636231, 1697397, 644627, 663150, 660109, 721185, 660108, 663867, 636223, 632631, 641005, 624304, 635148, 629887, 663853, 639708, 1424143, 651467, 638619,  635675,  641836,  645673,  652421,  629963,  638550,  663868,  631747,  645657,  632815,  637276,  652414,  660161,  650942,  645621,  610952,  632778,  655726,  633953,  641975]
 
 
 
-
+count = 0
 
 array_of_ids.each do |id|
   api_key = ENV['SPOONACULAR_API_KEY']
@@ -151,7 +150,7 @@ array_of_ids.each do |id|
     recipe.diet = data["diets"].join(", ")
   end
 
-  recipe.save!
+  recipe.save
 
   data["extendedIngredients"].each do |ingredient|
 
@@ -179,17 +178,23 @@ array_of_ids.each do |id|
     recipe_ingredient.save
   end
   puts "one recipe done"
+  count += 1
 end
 
-
+puts "You just generated #{count} recipes ;) "
 
 puts 'generating a user'
 
-user = User.create!(username: "ObamaUSA", email: "obama@usa.com", password: "123456")
+user = User.new(username: "ObamaUSA", email: "obama@usa.com", password: "123456")
+# file = URI.open("https://openclipart.org/image/800px/313668")
+# user.photo.attach(io: file, content_type: "image/png", filename: "obama picture")
+
+user.save!
+
 date = Time.now
 3.times do
   recipe = Recipe.last
-  PlannedMeal.create!(recipe: recipe, user_id: user.id, date: date)
+  PlannedMeal.create!(recipe: recipe, user: user, date: date)
 end
 
 
