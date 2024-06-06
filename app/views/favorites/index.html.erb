@@ -5,17 +5,17 @@
 
  <%= render "shared/search" %>
 
-  <div class="favorite-grid">
+  <div class="favorite-grid pt-4">
 
     <% @recipes.each do |recipe| %>
 
       <div class="showcard">
         <img src="<%= recipe.image %>" class="card-image" alt="<%= recipe.title %>">
         <div class="card-content">
-          <%= link_to recipe.title, recipe_path(recipe), class: "card-title" %>
+          <h6><%= link_to recipe.title, recipe_path(recipe), class: "card-title" %></h6>
           <p class="card-text"><%= recipe.category.split(', ')[0] %></p>
         </div>
-        <button class="add-button">+</button>
+        <%= image_tag 'plus.svg', class: "add-button" %>
       </div>
     <% end %>
 

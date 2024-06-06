@@ -11,8 +11,7 @@
 @import "components/index";
 @import "pages/index";
 
-$gray: rgb(240, 240, 240);
-$orange: rgb(228, 158, 29);
+$gray: #E4E4E4;
 $dark-gray: rgb(84, 84, 84);
 
 body {
@@ -50,7 +49,7 @@ h3 {
 .favorite-grid {
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 15px;
+  grid-gap: 20px;
 }
 
 .favorite-container {
@@ -59,4 +58,8 @@ h3 {
   justify-content: center;
   align-items: center;
   padding: 12px 20px;
+}
+
+a {
+  text-decoration: none;
 }
