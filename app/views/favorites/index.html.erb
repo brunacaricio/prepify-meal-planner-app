@@ -7,13 +7,13 @@
 
   <div class="favorite-grid pt-4">
 
-    <% @recipes.each do |recipe| %>
+    <% @favorites.each do |favorite| %>
 
       <div class="showcard">
-        <img src="<%= recipe.image %>" class="card-image" alt="<%= recipe.title %>">
+        <img src="<%= favorite.recipe.image %>" class="card-image" alt="<%= favorite.recipe.title %>">
         <div class="card-content">
-          <h6><%= link_to recipe.title, recipe_path(recipe), class: "card-title" %></h6>
-          <p class="card-text"><%= recipe.category.split(', ')[0] %></p>
+          <h6><%= link_to favorite.recipe.title, recipe_path(favorite.recipe), class: "card-title" %></h6>
+          <p class="card-text"><%= favorite.recipe.category.split(', ')[0] %></p>
         </div>
         <%= image_tag 'plus.svg', class: "add-button" %>
       </div>

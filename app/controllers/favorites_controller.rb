@@ -1,7 +1,6 @@
 class FavoritesController < ApplicationController
   def index
     @favorites = Favorite.all
-    @recipes = Recipe.all
   end
 
   def create
