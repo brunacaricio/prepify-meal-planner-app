@@ -11,13 +11,8 @@ Ingredient.destroy_all
 RecipeIngredient.destroy_all
 Recipe.destroy_all
 
-
-
 puts "Starting to generate"
-
-
 puts 'importing xlsx file'
-
 
 latest_file = Dir[Rails.root.join('exports', '*.xlsx')].max_by { |f| File.mtime(f) }
 
@@ -196,6 +191,5 @@ date = Time.now
   recipe = Recipe.last
   PlannedMeal.create!(recipe: recipe, user: user, date: date)
 end
-
 
 puts "done :)"

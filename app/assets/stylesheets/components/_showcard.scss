@@ -32,3 +32,66 @@
   top: 10px;
   right: 10px;
 }
+
+.category-tag {
+  position: absolute;
+  background-color: green;
+  border-radius: 17px;
+  color: white;
+  bottom: 10px;
+  right: 10px;
+}
+
+.recipe-showcard {
+  height: 200px;
+  display: flex;
+  // align-items: center;
+  border-radius: 17px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: 'Poppins', sans-serif;
+  padding-bottom: 5px;
+}
+
+.recipe-image {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  display: center;
+  object-fit: cover;
+}
+
+.recipe-showpage {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px 20px 20px;
+}
+
+.show-recipe-info {
+  padding: 20px 0px 20px 0px;
+}
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.ingredient-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 15px;
+  background: white;
+  border-radius: 17px;
+  margin-bottom: 5px;
+
+}
+
+.instructions-card {
+
+}
+
+.instructions-container {
+  display: grid;
+
+}

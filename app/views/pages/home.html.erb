@@ -28,12 +28,21 @@
     <%= render "shared/search" %>
 
     <div class="bigcard col-12 col-lg-8 text-center mb-3">
-      <h4><b>Today</b></h4>
+      <%= link_to 'Today', planned_meals_path, class: 'subparagraph' %>
       <div class="homecard add-recipe-card">
-        <%= link_to recipes_path do %>
-          <div>
-            <i class="fa-solid fa-plus icon-orange" style="font-size: 36px;"></i>
+        <% if current_user.planned_meals.find_by(date: Date.today) %>
+          <% recipe = current_user.planned_meals.first.recipe %>
+          <img src="<%= recipe.image %>" class="card-img-top" alt="<%= recipe.title %>">
+          <div class="">
+            <%= link_to recipe.title, recipe_path(recipe), class: "card-title" %>
+            <p class="card-text"><%= recipe.category.split(', ')[0].capitalize %></p>
           </div>
+        <% else %>
+          <%= link_to recipes_path do %>
+            <div>
+              <i class="fa-solid fa-plus icon-orange" style="font-size: 36px;"></i>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>

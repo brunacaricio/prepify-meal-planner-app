@@ -1,0 +1,32 @@
+.ingredient-card-scroll {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-y: auto;
+  border-radius: 18px;
+  height: 160px;
+}
+
+.ingredient-card {
+  position: absolute;
+  margin: 5px;
+  flex: 0 0 160px;
+
+  border-radius: 18px;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  display: flex;
+
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+}
+
+// .card-image-scroll {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   object-fit: cover;
+//
+// }

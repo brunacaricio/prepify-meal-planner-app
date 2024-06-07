@@ -1,28 +1,37 @@
-<div class="search-container">
+<div class="search-container mt-2">
 
-  <div class="indexpage-title pb-4 pt-2">
-    <h3><b>All recipes</b></h3>
+  <div class="indexpage-title pb-2 mt-2">
+    <h3><b>Search</b></h3>
   </div>
 
   <%= render 'shared/search' %>
 
   <div class="row">
       <div class="col-sm-12">
-          <h5 class ="pt-4 pb-4"><b>Recent Search</b></h5>
+          <h5 class ="pt-3 pb-3"><b>All recipes</b></h5>
       </div>
   </div>
 
-  <div class = "search-grid">
-          <% @recipes.each do |recipe| %>
-            <div class="card">
-                <img src="<%= recipe.image %>" class="card-image" alt="<%= recipe.title %>">
-                <div class="card-content">
-                    <%= link_to recipe.title, recipe_path(recipe), class: "card-title" %>
-                    <p class="card-text"><%= recipe.category.split(', ')[0] %></p>
-                </div>
-                <%= image_tag 'plus.svg', class: "add-button" %>
-            </div>
-          <% end %>
-  </div>
+  <% if @recipes.empty? %>
+    <div class="row">
+      <div class="col-sm-12">
+        <p>Oops, no recipe was found with your keyword.</p>
+        <p>Try a different one!</p>
+      </div>
+    </div>
+  <% else %>
+    <div class = "search-grid">
+            <% @recipes.each do |recipe| %>
+              <div class="card">
+                  <img src="<%= recipe.image %>" class="card-image" alt="<%= recipe.title %>">
+                  <div class="card-content">
+                      <%= link_to recipe.title, recipe_path(recipe), class: "card-title" %>
+                      <p class="card-text"><%= recipe.category.split(', ')[0] %></p>
+                  </div>
+                  <%= image_tag 'plus.svg', class: "add-button" %>
+              </div>
+            <% end %>
+    </div>
+  <% end %>
 
 </div>
