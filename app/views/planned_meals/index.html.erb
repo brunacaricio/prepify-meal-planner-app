@@ -2,8 +2,6 @@
 <% if @planned_meals.empty? %>
   <p>Add your first favorite (Probably should redirect to recipes) </p>
 <% else  %>
-
-
   <% (0..6).each do |day| %>
   <h4><%= Date.today + day %></h4>
     <% group = @planned_meals.where(date: Date.today + day) %>

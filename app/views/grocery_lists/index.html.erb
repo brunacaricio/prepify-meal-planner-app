@@ -1,0 +1,18 @@
+<div id="booking-form" class="p-3">
+        <h3>Pick your dates</h3>
+      <%= simple_form_for [@grocery_list] do |f| %>
+          <%= f.input :start_date, as: :string, input_html: { data: { controller: "grocery-list-datepicker" } }, label: false %>
+          <%= f.button :submit, "Select these dates", class: "btn btn-primary" %>
+      <% end %>
+</div>
+
+<h1>My grocery List</h1>
+<% if @grocery_list.grocery_list_items.exists? %>
+
+  <% @grocery_list.grocery_list_items.each do |item| %>
+    <% ingr = Ingredient.find_by(id: item.ingredient_id) %>
+    <h2><%= ingr.name %> <%= item.total_amount %></h2>
+  <% end %>
+<% else %>
+  <h2>Use the above calendar to select the dates or add some meals to your calendar !</h2>
+<% end %>

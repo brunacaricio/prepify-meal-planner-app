@@ -19,7 +19,7 @@
               <%= simple_form_for [@recipe, @planned_meal] do |f| %>
                 <div class="row">
                   <div class="col-md-6">
-                    <%= f.input :date, as: :string, input_html: { id: "date", data: { controller: "datepicker" }, class: "form-control" }, label: false %>
+                    <%= f.input :date, as: :string, input_html: { id: "date", data: { controller: "datepicker" }, class: "form-control" } %>
                   </div>
                   <div class="col-md-6">
                     <%= f.button :submit, "Add to my Calendar", class: "btn btn-outline-primary d-flex justify-content-center mx-auto mt-3 p-1" %>

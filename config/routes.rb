@@ -5,21 +5,12 @@ Rails.application.routes.draw do
   resources :recipes, only: %i[index show] do
 
     resources :favorites, only: [:create]
-
     resources :planned_meals, only: [:create]
 
   end
 
   resources :favorites, only: %i[index destroy]
-
-  # index or show # does it need a grocery list
-
   resources :planned_meals, only: [:index]
 
-  #what needs to be nested ?
-
-  #what is created where ?
-
-  #what needs a controller ?
-
+  resources :grocery_lists, only: [:update, :index]
 end
