@@ -44,7 +44,6 @@
 
 
     <div data-controller="toggle" class="mt-2">
-
       <button data-action="click->toggle#fire1" class="btn btn-outline-secondary my-3"> Ingredients
       </button>
       <button data-action="click->toggle#fire2" class="btn btn-outline-secondary my-3"> Instructions
@@ -60,7 +59,7 @@
       </div>
 
 
-      <div class="instructions-container instructions-scroll" data-toggle-target="instructions">
+      <div class="instructions-container instructions-scroll d-none" data-toggle-target="instructions">
         <% chunks = @recipe.instructions.split('.') %>
         <% chunks.each_with_index do |chunk, index|%>
           <div class="flex-box">
