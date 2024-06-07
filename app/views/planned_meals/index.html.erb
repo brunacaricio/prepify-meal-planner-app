@@ -22,7 +22,9 @@
                   <%= link_to planned.recipe.title, recipe_path(planned.recipe), class: "card-title" %>
                   <p class="card-text"><%= planned.recipe.category.split(', ')[0] %></p>
                 </div>
-                <%= image_tag 'delete.svg', class: "delete-button" %>
+                  <%= link_to planned_meal_path(planned.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure???" }, class: "delete-button" do %>
+                    <%= image_tag 'delete.svg' %>
+                  <% end %>
               </div>
             <% end %>
           </div>
