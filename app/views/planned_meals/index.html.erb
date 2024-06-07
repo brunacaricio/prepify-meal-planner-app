@@ -1,18 +1,33 @@
-<h1>MY CALENDAR</h1>
-<% if @planned_meals.empty? %>
-  <p>Add your first favorite (Probably should redirect to recipes) </p>
-<% else  %>
-
-
-  <% (0..6).each do |day| %>
-  <h4><%= Date.today + day %></h4>
-    <% group = @planned_meals.where(date: Date.today + day) %>
-    <% if group.empty? %>
-      <p>Add a recipe For this day ! </p>
+<div class="container mt-4">
+  <div class="indexpage-title pb-1 mt-4">
+    <h3><b>My Calendar</b></h3>
+  </div>
+  <div class="text-center mt-4">
+    <% if @planned_meals.empty? %>
+      <p>You still don't have any meals planned.</p>
+      <%= link_to 'Search for recipe ideas', recipes_path, class: "p-3 mb-2 btn orange-btn text-light" %>
     <% else %>
-      <% group.each do |planned| %>
-        <p>On <%= Date.today + day %> you will eat <%= planned.recipe.title %></p>
+      <% (Date.today..Date.today + 7).each do |day| %>
+        <h4><b><%= day.strftime("%A, %d/%m/%Y") %></b></h4>
+        <hr>
+        <% group = @planned_meals.where(date: day) %>
+        <% if group.empty? %>
+          <%= link_to '+', recipes_path, class: 'btn orange-btn-round text-light' %>
+        <% else %>
+          <div class="search-grid mb-3">
+            <% group.each do |planned| %>
+              <div class="card-planned-meal">
+                <img src="<%= planned.recipe.image %>" class="card-image-planned-meal" alt="<%= planned.recipe.title %>">
+                <div class="card-content-planned-meal">
+                  <%= link_to planned.recipe.title, recipe_path(planned.recipe), class: "card-title" %>
+                  <p class="card-text"><%= planned.recipe.category.split(', ')[0] %></p>
+                </div>
+                <%#= image_tag 'trash.svg', class: "add-button" %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
-<% end %>
+  </div>
+</div>

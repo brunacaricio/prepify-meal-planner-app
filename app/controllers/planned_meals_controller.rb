@@ -18,6 +18,12 @@ class PlannedMealsController < ApplicationController
     end
   end
 
+  def destroy
+    @planned_meal = current_user.planned_meals.find(params[:id])
+    @planned_meal.destroy
+    redirect_to planned_meals_path, notice: 'Recipe deleted successfully'
+  end
+
   private
 
   def planned_meal_params
