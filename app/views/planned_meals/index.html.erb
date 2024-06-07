@@ -1,4 +1,5 @@
 <div class="container mt-4">
+
   <div class="indexpage-title pb-1 mt-4">
     <h3><b>My Calendar</b></h3>
   </div>
@@ -14,7 +15,7 @@
         <% if group.empty? %>
           <%= link_to '+', recipes_path, class: 'btn orange-btn-round text-light' %>
         <% else %>
-          <div class="grid-planned-meal mb-3">
+          <div class="grid-planned-meal mb-3 justify-content-center">
             <% group.each do |planned| %>
               <div class="card-planned-meal">
                 <img src="<%= planned.recipe.image %>" class="card-image-planned-meal" alt="<%= planned.recipe.title %>">
@@ -22,7 +23,7 @@
                   <%= link_to planned.recipe.title, recipe_path(planned.recipe), class: "card-title" %>
                   <p class="card-text"><%= planned.recipe.category.split(', ')[0] %></p>
                 </div>
-                <%#= image_tag 'trash.svg', class: "delete-button" %>
+                <%= image_tag 'delete.svg', class: "delete-button" %>
               </div>
             <% end %>
           </div>
@@ -30,4 +31,5 @@
       <% end %>
     <% end %>
   </div>
+
 </div>
