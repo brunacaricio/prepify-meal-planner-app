@@ -1,6 +1,6 @@
 <div class="col-12 col-lg-4">
+  
   <div class="recipe-showcard">
-
     <img src="<%= @recipe.image %>" class="recipe-image" alt="<%= @recipe.title %>">
     <p class="category-tag"><%= @recipe.category %></p>
     <i id="plus-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><%= image_tag 'plus.svg', class: "add-button" %></i>
@@ -33,7 +33,6 @@
       </div>
     </div>
   </div>
-
 
   <div class="show-recipe-info">
     <h4 class= "pb-3 pt-1"><%= @recipe.title %></h4>

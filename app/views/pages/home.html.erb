@@ -48,13 +48,14 @@
       </div>
       <div class="mt-3 category-scroll">
         <% @categories.each do |category|  %>
-          <%= link_to "#{category}", root_path(categ: "#{category}"), class: params[:categ] == category ? "card-category card-category-active" : "card-category" %>
+          <div class="category-button"><%= link_to "#{category}", root_path(categ: "#{category}"), class: params[:categ] == category ? "card-category card-category-active" : "card-category" %></div>
         <% end %>
       </div>
     </div>
 
   </div>
 </div>
+
 
 
     <div class="col-12 col-lg-6 justify-content-center">
@@ -68,7 +69,8 @@
                   <%= link_to recipe.title, recipe_path(recipe), class: "card-title" %>
                   <p class="card-text"><%= recipe.category.split(', ')[0].capitalize %></p>
                 </div>
-                <button class="add-button">+</button>
+                <%= image_tag 'plus.svg', class: "add-button" %>
+
               </div>
             <% end %>
           </div>
