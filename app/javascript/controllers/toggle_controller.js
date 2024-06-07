@@ -7,9 +7,18 @@ export default class extends Controller {
   connect() {
   }
 
-  fire() {
+  fire1() {
 
-    this.ingredientsTarget.classList.toggle("d-none");
-    this.instructionsTarget.classList.toggle("");
+    this.instructionsTarget.classList.add("d-none");
+    this.ingredientsTarget.classList.remove("d-none");
+    // this.instructionsTarget.classList.toggle("");
+    }
+
+  fire2() {
+
+    this.ingredientsTarget.classList.add("d-none");
+    this.instructionsTarget.classList.remove("d-none");
+
+    // this.instructionsTarget.classList.toggle("");
     }
 }
