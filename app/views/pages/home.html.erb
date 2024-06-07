@@ -34,7 +34,7 @@
       <% if signed_in? %>
         <%current_user.planned_meals.find_by(date: Date.today) %>
 
-          <% recipe = current_user.planned_meals.first.recipe %>
+          <% recipe = current_user.planned_meals.any? ? current_user.planned_meals.first.recipe : Recipe.last %>
           <img src="<%= recipe.image %>" class="card-image" alt="<%= recipe.title %>">
 
           <div class="homecard-content">
