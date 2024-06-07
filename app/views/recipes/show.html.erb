@@ -43,37 +43,34 @@
     </div>
 
 
-    <div data-controller="toggle" class="ingredients-card mt-2">
+    <div data-controller="toggle" class="mt-2">
 
-      <button data-action="click->toggle#fire" class="btn btn-outline-secondary my-3"> Ingredients
+      <button data-action="click->toggle#fire1" class="btn btn-outline-secondary my-3"> Ingredients
+      </button>
+      <button data-action="click->toggle#fire2" class="btn btn-outline-secondary my-3"> Instructions
       </button>
 
-      <div  data-toggle-target="ingredients" class="">
-
-        <div class="ingredient-card-scroll">
-          <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
-            <li class="ingredient-card mt-2">
-              <div class="grid"><%= recipe_ingredient.ingredient.name.capitalize %></div>
-              <div class="grid"><%= recipe_ingredient.quantity%><%= recipe_ingredient.unit %></div>
-            </li>
-            <% end %>
-        </div>
-      </div>
-    </div>
-
-    <div class="instructions-card mt-2">
-
-      <button class="btn btn-outline-secondary my-3"> Instructions
-      </button>
-
-        <div class="instructions-container">
-          <% chunks = @recipe.instructions.split('.') %>
-          <% chunks.each_with_index do |chunk, index|%>
-            <%= index + 1 %>.  <%= chunk %>
-            <br>
-
+      <div  class="ingredient-card-scroll" data-toggle-target="ingredients">
+        <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
+          <li class="ingredient-card mt-2">
+            <div class="grid"><%= recipe_ingredient.ingredient.name.capitalize %></div>
+            <div class="grid"><%= recipe_ingredient.quantity%><%= recipe_ingredient.unit %></div>
+          </li>
           <% end %>
-        </div>
+      </div>
+
+
+      <div class="instructions-container instructions-scroll" data-toggle-target="instructions">
+        <% chunks = @recipe.instructions.split('.') %>
+        <% chunks.each_with_index do |chunk, index|%>
+          <div class="flex-box">
+            <p class="index"><%= index + 1 %>. </p>
+
+            <p class="chunk"><%= chunk %></p>
+            <br>
+          </div>
+          <% end %>
+      </div>
 
     </div>
 
