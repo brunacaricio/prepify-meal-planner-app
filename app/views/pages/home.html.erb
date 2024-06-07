@@ -31,14 +31,14 @@
       <%= link_to 'Today', planned_meals_path, class: 'subparagraph' %>
 
       <div class="homecard add-recipe-card">
-
-        <% if current_user.planned_meals.find_by(date: Date.today) %>
+      <% if signed_in? %>
+        <%current_user.planned_meals.find_by(date: Date.today) %>
 
           <% recipe = current_user.planned_meals.first.recipe %>
           <img src="<%= recipe.image %>" class="card-image" alt="<%= recipe.title %>">
 
           <div class="homecard-content">
-            <h6 class= "font-weight-bold"><%= link_to recipe.title, recipe_path(recipe), class: "card-title" %></h6>
+            <h6 class= "font-weight-bold"><b><%= link_to recipe.title, recipe_path(recipe), class: "card-title" %></b></h6>
             <p class="card-text font-weight-light"><%= recipe.category.split(', ')[0].capitalize %></p>
           </div>
 
