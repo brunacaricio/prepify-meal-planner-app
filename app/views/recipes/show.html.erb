@@ -64,7 +64,7 @@
 
 
       <div class="instructions-container instructions-scroll d-none" data-toggle-target="instructions">
-        <% chunks = @recipe.instructions.split('.') %>
+        <% chunks = @recipe.instructions.gsub(/<\/?li>|<\/?ol>/, "").split('.') %>
         <% chunks.each_with_index do |chunk, index|%>
           <div class="flex-box">
             <p class="index"><%= index + 1 %>. </p>
