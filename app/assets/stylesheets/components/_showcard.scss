@@ -43,11 +43,9 @@
 }
 
 .recipe-showcard {
-  width:  90%;
-  height: 150px;
+  height: 200px;
   display: flex;
-  padding: 10px;
-  align-items: center;
+  // align-items: center;
   border-radius: 17px;
   overflow: hidden;
   position: relative;
@@ -59,9 +57,41 @@
 .recipe-image {
   width: 100%;
   height: auto;
-  position: relative;
+  position: absolute;
+  display: center;
+  object-fit: cover;
 }
 
-.recipe-image {
-  position: relative;
+.recipe-showpage {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px 20px 20px;
+}
+
+.show-recipe-info {
+  padding: 20px 0px 20px 0px;
+}
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.ingredient-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 15px;
+  background: white;
+  border-radius: 17px;
+  margin-bottom: 5px;
+
+}
+
+.instructions-card {
+
+}
+
+.instructions-container {
+  display: grid;
+
 }
