@@ -13,7 +13,11 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="button-container">
-            <button class="btn btn-outline-primary d-flex justify-content-center mx-auto mt-3 p-1"> My Favorites <i class="<%='fa-solid fa-heart p-1'%>"%></i></button>
+            <%= form_with url: recipe_favorites_path(recipe_id: @recipe.id), method: :post, class: "d-inline" do %>
+            <button type="submit" class="btn btn-outline-primary d-flex justify-content-center mx-auto mt-3 p-1">
+              My Favorites <i class="fa-solid fa-heart p-1"></i>
+            </button>
+              <% end %>
             <hr>
             <%= simple_form_for [@recipe, @planned_meal] do |f| %>
               <div class="row">
