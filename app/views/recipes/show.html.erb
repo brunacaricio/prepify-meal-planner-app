@@ -1,61 +1,60 @@
 <div class="col-12 col-lg-4">
-  <div class="showcard">
-    <img src="<%= @recipe.image %>" class="card-image" alt="<%= @recipe.title %>">
-      <%= @recipe.category %>
-      <%= @recipe.total_time %>
-      <i id="plus-button"  class="fa-solid fa-circle-plus" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-      </i>
+  
+  <div class="recipe-showcard">
+    <img src="<%= @recipe.image %>" class="recipe-image" alt="<%= @recipe.title %>">
+    <p class="category-tag"><%= @recipe.category %></p>
+    <i id="plus-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><%= image_tag 'plus.svg', class: "add-button" %></i>
 
-      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Where do you want to add this recipe?</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="button-container">
-              <button class="btn btn-outline-primary d-flex justify-content-center mx-auto mt-3 p-1"> My Favorites <i class="<%='fa-solid fa-heart p-1'%>"%></i></button>
-              <hr>
-              <%= simple_form_for [@recipe, @planned_meal] do |f| %>
-                <div class="row">
-                  <div class="col-md-6">
-                    <%= f.input :date, as: :string, input_html: { id: "date", data: { controller: "datepicker" }, class: "form-control" }, label: false %>
-                  </div>
-                  <div class="col-md-6">
-                    <%= f.button :submit, "Add to my Calendar", class: "btn btn-outline-primary d-flex justify-content-center mx-auto mt-3 p-1" %>
-                  </div>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Where do you want to add this recipe?</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="button-container">
+            <button class="btn btn-outline-primary d-flex justify-content-center mx-auto mt-3 p-1"> My Favorites <i class="<%='fa-solid fa-heart p-1'%>"%></i></button>
+            <hr>
+            <%= simple_form_for [@recipe, @planned_meal] do |f| %>
+              <div class="row">
+                <div class="col-md-6">
+                  <%= f.input :date, as: :string, input_html: { id: "date", data: { controller: "datepicker" }, class: "form-control" }, label: false %>
                 </div>
-              <% end %>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
+                <div class="col-md-6">
+                  <%= f.button :submit, "Add to my Calendar", class: "btn btn-outline-primary d-flex justify-content-center mx-auto mt-3 p-1" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
+    </div>
   </div>
-    <div class="show-recipe-info">
-      <h4 class= "pb-3 pt-1"><%= @recipe.title %></h4>
 
-      <p> Servings: <%= @recipe.servings %></p>
+  <div class="show-recipe-info">
+    <h4 class= "pb-3 pt-1"><%= @recipe.title %></h4>
 
-      <p><%= @recipe.ingredients.count %> ingredients</p>
+    <p> Servings: <%= @recipe.servings %></p>
 
-      <div class="ingredients-card">
-        <button class="btn btn-outline-secondary"> Ingredients
-        </button>
-        <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
-          <li><%= recipe_ingredient.quantity %>
-          <%= recipe_ingredient.unit %> <%= recipe_ingredient.ingredient.name %></li>
-          <% end %>
-      </div>
+    <p><%= @recipe.ingredients.count %> ingredients</p>
 
-      <div class="instructions-card">
-        <button class="btn btn-outline-secondary"> Instructions
-        </button>
+    <div class="ingredients-card">
+      <button class="btn btn-outline-secondary"> Ingredients
+      </button>
+      <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
+        <li><%= recipe_ingredient.ingredient.name.capitalize %><%= recipe_ingredient.quantity%><%= recipe_ingredient.unit %></li>
+        <% end %>
+    </div>
 
-        <%= @recipe.instructions %>
-      </div>
+    <div class="instructions-card">
+      <button class="btn btn-outline-secondary"> Instructions
+      </button>
+
+      <%= @recipe.instructions %>
+    </div>
 
   </div>
 </div>
