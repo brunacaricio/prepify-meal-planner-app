@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_06_101751) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_07_112928) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,7 +59,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_06_101751) do
     t.datetime "updated_at", null: false
     t.bigint "planned_meal_id"
     t.bigint "recipe_ingredient_id"
+    t.bigint "ingredient_id"
     t.index ["grocery_list_id"], name: "index_grocery_list_items_on_grocery_list_id"
+    t.index ["ingredient_id"], name: "index_grocery_list_items_on_ingredient_id"
     t.index ["planned_meal_id"], name: "index_grocery_list_items_on_planned_meal_id"
     t.index ["recipe_ingredient_id"], name: "index_grocery_list_items_on_recipe_ingredient_id"
   end
@@ -135,6 +137,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_06_101751) do
   add_foreign_key "favorites", "recipes"
   add_foreign_key "favorites", "users"
   add_foreign_key "grocery_list_items", "grocery_lists"
+  add_foreign_key "grocery_list_items", "ingredients"
   add_foreign_key "grocery_list_items", "planned_meals"
   add_foreign_key "grocery_list_items", "recipe_ingredients"
   add_foreign_key "grocery_lists", "users"
