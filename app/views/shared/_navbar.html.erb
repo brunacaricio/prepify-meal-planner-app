@@ -28,7 +28,7 @@
       <% end %>
     </li>
     <li>
-    <%= link_to '#', class:"nav-link" do %>
+    <%= link_to '#', class:"nav-link d-none" do %>
       <i class="<%= 'fa-solid fa-user active' if current_page?('#') %>
         <%= 'fa-solid fa-user inactive' unless current_page?('#') %>"%>
       </i>
