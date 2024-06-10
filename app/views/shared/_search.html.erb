@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-12 col-lg-4 my-3 mr-2">
+    <div class="search-bar col-12 col-lg-4 my-3 mr-2">
       <%= form_with url: recipes_path, method: :get, class: "d-flex search-form" do %>
         <%= text_field_tag :query,
               params[:query],
               class: "form-control",
-              placeholder: "Search for a recipe..."
+              placeholder: "search recipe"
           %>
-        <%= button_tag(type: "submit", class: "btn orange-btn mx-2") do %>
+        <%= button_tag(type: "submit", class: "search-button btn orange-btn mx-2") do %>
           <i class="fa-solid fa-magnifying-glass"></i>
         <% end %>
       <% end %>

@@ -16,21 +16,21 @@
         </div>
         <div class="col-10">
           <% if user_signed_in? %>
-            <h4>Hello, <b><%= current_user.username %></b>!</h4>
+            <h4><b>Hello <%= current_user.username %></b></h4>
           <% else %>
-            <h4>Hello, you!</h4>
+            <h4><b>Hello</b></h4>
           <% end %>
-          <p>What are you cooking this week?</p>
+          <p class="fw-light">What are you cooking this week?</p>
         </div>
       </div>
     </div>
 
     <%= render "shared/search" %>
 
-    <div class="bigcard col-12 col-lg-8 mb-3">
-      <%= link_to 'Today', planned_meals_path, class: 'subparagraph' %>
+    <div class="bigcard col-12 col-lg-8 mb-3 mt-3">
+      <h3><%= link_to 'Today', planned_meals_path, class: 'subparagraph' %></h3>
 
-      <div class="homecard add-recipe-card">
+      <div class="homecard add-recipe-card mt-3">
       <% if signed_in? %>
         <%current_user.planned_meals.find_by(date: Date.today) %>
 
@@ -57,8 +57,8 @@
 
     <div class="col-12 col-lg-6 justify-content-center d-flex flex-column">
       <div class="d-flex justify-content-between align-items-center">
-        <h4 class="mt-3"><b>Search by category</b></h4>
-        <%= link_to 'See all', recipes_path, class: 'btn btn-link text-dark text-decoration-none ml-auto' %>
+        <%# <h4 class="mt-3"><b>Search by category</b></h4> %>
+        <%= link_to 'See all', recipes_path, class: 'btn btn-link text-dark text-decoration-none ml-auto fw-light mt-3' %>
       </div>
       <div class="mt-3 category-scroll">
         <% @categories.each do |category|  %>
@@ -80,10 +80,10 @@
               <div class="card-scroll">
                 <img src="<%= recipe.image %>" class="card-image-scroll" alt="<%= recipe.title %>">
                 <div class="card-content">
-                  <%= link_to recipe.title, recipe_path(recipe), class: "card-title" %>
-                  <p class="card-text"><%= recipe.category.split(', ')[0].capitalize %></p>
+                  <%= link_to recipe.title, recipe_path(recipe), class: "card-title fw-bold" %>
+                  <p class="card-text fw-light"><%= recipe.category.split(', ')[0].capitalize %></p>
                 </div>
-                <%= image_tag 'plus.svg', class: "add-button" %>
+                <%= image_tag 'plus.svg', class: "add-button w-12" %>
 
               </div>
             <% end %>
