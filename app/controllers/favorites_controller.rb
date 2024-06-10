@@ -10,7 +10,7 @@ class FavoritesController < ApplicationController
 
     @favorite = Favorite.new(recipe: @recipe, user: current_user)
     if @favorite.save!
-      redirect_to recipe_path(@recipe)
+      redirect_to favorites_path
     else
       flash.now[:alert] = 'Your recipe could not be added to the calendar...'
       redirect_to recipe_path(@recipe)
