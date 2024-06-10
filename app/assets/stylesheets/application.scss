@@ -71,13 +71,20 @@ a {
   justify-content: space-between;
 }
 
+
 .showbutton {
   background-color: $orange;
-  border-radius: 18px;
+  border-radius: 12px;
   margin-bottom: 12px;
   color: white;
   padding: 9px 20px;
   border-style: none;
+}
+
+.showbutton .active {
+  background-color: white;
+  color: $orange;
+
 }
 
 .recipe-grid {
