@@ -83,7 +83,54 @@
                   <%= link_to recipe.title, recipe_path(recipe), class: "card-title" %>
                   <p class="card-text"><%= recipe.category.split(', ')[0].capitalize %></p>
                 </div>
-                <%= image_tag 'plus.svg', class: "add-button" %>
+
+                <i id="plus-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%=recipe.id%>"><%= image_tag 'plus.svg', class: "add-button" %></i>
+
+                <div class="modal fade" id="staticBackdrop<%=recipe.id%>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Where do you want to add this recipe?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="button-container">
+
+                        <% if current_user.favorites.exists?(recipe_id: recipe.id) %>
+                          <button type="button" class="btn btn-outline-success d-flex justify-content-center mx-auto mt-3 p-1" disabled> Already saved in my Favorites !</button>
+                        <% else %>
+                          <%= form_with url: recipe_favorites_path(recipe_id: recipe.id), method: :post, class: "d-inline" do %>
+                          <button type="submit" class="btn btn-outline-primary d-flex justify-content-center mx-auto mt-3 p-1">
+                            My Favorites <i class="fa-solid fa-heart p-1"></i>
+                          </button>
+                            <% end %>
+                        <% end %>
+
+                        <hr>
+
+                        <%= simple_form_for [recipe, @planned_meal] do |f| %>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <%= f.input :date, as: :string, input_html: { id: "date", data: { controller: "datepicker" }, class: "form-control", placeholder: "Select a day" }, label: false %>
+                            </div>
+                            <div class="col-md-6">
+                              <%= f.button :submit, "Add to my Calendar", class: "btn btn-outline-primary d-flex justify-content-center mx-auto mt-3 p-1" %>
+                            </div>
+                          </div>
+                        <% end %>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+
+
+
 
               </div>
             <% end %>
