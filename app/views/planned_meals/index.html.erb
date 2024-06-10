@@ -7,7 +7,7 @@
       <p>You still don't have any meals planned.</p>
       <%= link_to 'Search for recipe ideas', recipes_path, class: "p-3 mb-2 btn orange-btn text-light" %>
     <% else %>
-      <% (Date.today..Date.today + 7).each do |day| %>
+      <% (Date.today..Date.today + 6).each do |day| %>
         <h4><b><%= day.strftime("%A, %d/%m/%Y") %></b></h4>
         <hr>
         <% group = @planned_meals.where(date: day) %>
