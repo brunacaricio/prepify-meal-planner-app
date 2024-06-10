@@ -94,7 +94,7 @@
                       </div>
                       <div class="button-container">
 
-                        <% if current_user.favorites.exists?(recipe_id: recipe.id) %>
+                        <% if user_signed_in? && current_user.favorites.exists?(recipe_id: recipe.id) %>
                           <button type="button" class="btn btn-outline-success d-flex justify-content-center mx-auto mt-3 p-1" disabled> Already saved in my Favorites !</button>
                         <% else %>
                           <%= form_with url: recipe_favorites_path(recipe_id: recipe.id), method: :post, class: "d-inline" do %>
