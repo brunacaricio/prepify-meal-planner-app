@@ -8,7 +8,7 @@
       <%= link_to 'Search for recipe ideas', recipes_path, class: "p-3 mb-2 btn orange-btn text-light" %>
     <% else %>
       <% (Date.today..Date.today + 6).each do |day| %>
-        <h4><b><%= day.strftime("%A, %d/%m/%Y") %></b></h4>
+        <h4><b><%= day.strftime("%A") %></b></h4>
         <hr>
         <% group = @planned_meals.where(date: day) %>
         <% if group.empty? %>
@@ -32,5 +32,28 @@
       <% end %>
     <% end %>
   </div>
-
+  <div class="text-center mt-4">
+    <% if @future_meals_hash.empty? %>
+      <p>You don't have meals planned beyond this point..</p>
+    <% else %>
+      <% @future_meals_hash.each do |key, group| %>
+        <hr>
+        <h4><b><%= key.strftime("%d/%m/%Y") %></b></h4>
+        <div class="grid-planned-meal mb-3 justify-content-center">
+          <% group.each do |meal| %>
+          <div class="card-planned-meal">
+              <img src="<%= meal.recipe.image %>" class="card-image-planned-meal" alt="<%= meal.recipe.title %>">
+              <div class="card-content-planned-meal">
+                  <%= link_to meal.recipe.title, recipe_path(meal.recipe), class: "card-title" %>
+                  <p class="card-text"><%= meal.recipe.category.split(', ')[0] %></p>
+              </div>
+                <%= link_to planned_meal_path(meal.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure???" }, class: "delete-button" do %>
+                <%= image_tag 'delete.svg'%>
+                <% end %>
+          </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
