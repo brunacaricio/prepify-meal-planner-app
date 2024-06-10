@@ -55,7 +55,7 @@ if latest_file
 
   (2..ingredient_recipe_sheet.last_row).each do |row|
     new_recipe_ingredient = RecipeIngredient.new(
-      quantity: ingredient_recipe_sheet.cell(row,2).to_i,
+      quantity: ingredient_recipe_sheet.cell(row,2).ceil,
       unit: ingredient_recipe_sheet.cell(row, 3),
     )
 
@@ -65,52 +65,23 @@ if latest_file
     new_recipe_ingredient.recipe_title = recipe.title
 
 
-
-
-
     ingredient = Ingredient.find_by(name: ingredient_recipe_sheet.cell(row,9))
 
     new_recipe_ingredient.ingredient = ingredient
     new_recipe_ingredient.ingredient_name = ingredient.name
 
-
-
     new_recipe_ingredient.save!
 
-
-      ## To find the correct ingredient and recipe for the association
-      ## Either update the model to add recipe name and ingredient name to recipe ingredients
-      ## then find correct recipe and ingredient with (find_by name: ...)
-
-
-      ## try to match the the different ingredient_id and recipe_id with the id in the third sheet
-      ## get the name in the associated rows in both sheet
-      ## find by name in the database and associated with what is matched
   end
 
 else
-
   puts "no file to be imported"
-
 end
-
-
 puts "done with excel"
-
-
-
-
-
-
-
 puts 'Now Importing with the api'
 
 
-
-
 array_of_ids =[]
-
-
 
 count = 0
 
@@ -160,7 +131,7 @@ array_of_ids.each do |id|
 
   recipe_ingredient = RecipeIngredient.new(
     unit: ingredient["measures"]["metric"]["unitShort"],
-    quantity: ingredient["measures"]["metric"]["amount"].to_i
+    quantity: ingredient["measures"]["metric"]["amount"].ceil
   )
 
 
@@ -176,7 +147,7 @@ array_of_ids.each do |id|
   count += 1
 end
 
-puts "You just generated #{count} recipes ;) "
+puts "You just generated #{count} recipes ;)"
 
 puts 'generating a user'
 
@@ -185,10 +156,9 @@ file = URI.open("https://openclipart.org/image/800px/313668")
 user.photo.attach(io: file, content_type: "image/png", filename: "obama picture")
 
 user.save!
-
 date = Time.now
 3.times do
-  recipe = Recipe.last
+  recipe = Recipe.all.sample
   PlannedMeal.create!(recipe: recipe, user: user, date: date)
 end
 
