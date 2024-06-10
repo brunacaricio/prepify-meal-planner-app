@@ -1,10 +1,5 @@
 <div class ="favorite-container mt-4">
-
   <h2><b>My grocery list</b></h2>
-
-
-
-
   <div id="booking-form" class="p-3 container">
     <p>Hey, <%= current_user.username %>!</p>
     <p>For when do you want to grocery shop?</p>
@@ -12,31 +7,21 @@
         <%= f.input :start_date, as: :string, input_html: { data: { controller: "grocery-list-datepicker" } }, label: false, plaholder: 'Select these dates' %>
         <%= f.button :submit, "Generate my list", class: "btn orange-btn mb-3" %>
     <% end %>
-
-    <span>
-      <% if @grocery_list.grocery_list_items.exists? %>
-        <% @grocery_list.grocery_list_items.each do |item| %>
-          <% ingr = Ingredient.find_by(id: item.ingredient_id) %>
-          <% recip_ingr = RecipeIngredient.find_by(id: item.recipe_ingredient_id) %>
-
-            <li class="ingredient-card mt-2">
-              <div class="grid"><%= ingr.name.capitalize %></div>
-              <div class="grid"><%= item.total_amount %><%= recip_ingr.unit %></div>
-            </li>
-
-
-
-
-
-
-        <% end %>
-    </span>
+      <% if @aisle_hash.nil? || @aisle_hash.empty?%>
+      <h2 class="mt-3">Use the above calendar to select the dates or add some meals to your calendar :) </h2>
 
     <% else %>
-      <p class="mt-3">Use the above calendar to select the dates or add some meals to your calendar :)</p>
+      <% @aisle_hash.each do |key,items| %>
+        <p class= "py-1"><b><%= key %></b></p>
+        <% items.each do |item| %>
+          <% ingr = Ingredient.find_by(id: item.ingredient_id) %>
+          <% recip_ingr = RecipeIngredient.find_by(id: item.recipe_ingredient_id) %>
+            <li class="ingredient-card mt-2">
+              <div class="grid"><h6><%= ingr.name.capitalize %></h6></div>
+              <div class="grid"><h6><%= item.total_amount %> <%= recip_ingr.unit %></h6></div>
+            </li>
+          <% end %>
+      <% end %>
     <% end %>
-
   </div>
-
-
 </div>
