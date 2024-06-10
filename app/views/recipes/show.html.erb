@@ -2,7 +2,7 @@
 
   <div class="recipe-showcard">
     <img src="<%= @recipe.image %>" class="recipe-image" alt="<%= @recipe.title %>">
-    <p class="category-tag"><%= @recipe.category %></p>
+    <p class="showcategory category-tag"><%= @recipe.category %></p>
     <i id="plus-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><%= image_tag 'plus.svg', class: "add-button" %></i>
 
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -39,39 +39,42 @@
   </div>
 
   <div class="show-recipe-info">
-    <h4 class= "pb-3 pt-1"><%= @recipe.title %></h4>
+    <h4 class= "pb-3 pt-1"><b><%= @recipe.title %></b></h4>
     <div class="recipe-grid">
-    <p> Servings: <%= @recipe.servings %></p>
-
-    <p><%= @recipe.ingredients.count %> ingredients</p>
+      <p> Servings: <%= @recipe.servings %></p>
+      <p><%= @recipe.ingredients.count %> ingredients</p>
     </div>
 
 
     <div data-controller="toggle" class="mt-2">
-      <button data-action="click->toggle#fire1" class="btn btn-outline-secondary my-3"> Ingredients
-      </button>
-      <button data-action="click->toggle#fire2" class="btn btn-outline-secondary my-3"> Instructions
-      </button>
+
+      <div class="showbuttons">
+        <button data-action="click->toggle#fire1" class="showbutton"> Ingredients
+        </button>
+        <button data-action="click->toggle#fire2" class="showbutton"> Instructions
+        </button>
+      </div>
 
       <div  class="ingredient-card-scroll" data-toggle-target="ingredients">
         <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
           <li class="ingredient-card mt-2">
-            <div class="grid"><%= recipe_ingredient.ingredient.name.capitalize %></div>
-            <div class="grid"><%= recipe_ingredient.quantity%><%= recipe_ingredient.unit %></div>
+            <div class="grid"><h6><b><%= recipe_ingredient.ingredient.name.capitalize %></b></h6></div>
+            <div class="grid"><h6><%= recipe_ingredient.quantity%> <%= recipe_ingredient.unit %></h6></div>
           </li>
           <% end %>
       </div>
 
 
-      <div class="instructions-container instructions-scroll d-none" data-toggle-target="instructions">
+      <div class="instructions-container instructions-scroll d-none mt-3" data-toggle-target="instructions">
         <% chunks = @recipe.instructions.gsub(/<\/?li>|<\/?ol>/, "").split('.') %>
         <% chunks.each_with_index do |chunk, index|%>
-          <div class="flex-box">
-            <p class="index"><%= index + 1 %>. </p>
 
-            <p class="chunk"><%= chunk %></p>
+          <div class="instruction-card">
+            <p class="index"><b>Step <%= index + 1 %> </b></p>
+            <p class="chunk fw-light"><%= chunk %></p>
             <br>
           </div>
+
           <% end %>
       </div>
 
