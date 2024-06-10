@@ -27,13 +27,18 @@
       </i>
       <% end %>
     </li>
-    <li>
-    <%= link_to '#', class:"nav-link d-none" do %>
-      <i class="<%= 'fa-solid fa-user active' if current_page?('#') %>
-        <%= 'fa-solid fa-user inactive' unless current_page?('#') %>"%>
-      </i>
-      <% end %>
-    </li>
 
+    <div class="dropdown">
+      <a href="#" class="nav-link" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="<%= 'fa-solid fa-user active' if current_page?('#') %> <%= 'fa-solid fa-user inactive' unless current_page?('#') %>"></i>
+      </a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <% if user_signed_in? %>
+          <%= link_to "Sign out", destroy_user_session_path,  data: {turbo_method: :delete}, class: "dropdown-item font-weight-bold" %>
+        <% else %>
+          <%= link_to "Login", user_session_path, class: "dropdown-item font-weight-bold" %>
+        <% end %>
+      </div>
+    </div>
   </ul>
 </nav>

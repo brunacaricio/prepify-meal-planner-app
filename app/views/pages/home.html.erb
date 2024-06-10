@@ -16,25 +16,24 @@
         </div>
         <div class="col-10">
           <% if user_signed_in? %>
-            <h4>Hello, <b><%= current_user.username %></b>!</h4>
+            <h4><b>Hello <%= current_user.username %></b></h4>
           <% else %>
-            <h4>Hello, you!</h4>
+            <h4><b>Hello</b></h4>
           <% end %>
-          <p>What are you cooking this week?</p>
+          <p class="fw-light">What are you cooking this week?</p>
         </div>
       </div>
     </div>
 
     <%= render "shared/search" %>
 
-    <div class="bigcard col-12 col-lg-8 mb-3">
-      <%= link_to 'Today', planned_meals_path, class: 'subparagraph' %>
+    <div class="bigcard col-12 col-lg-8 mb-3 mt-3">
+      <h3><%= link_to 'Today', planned_meals_path, class: 'subparagraph' %></h3>
 
-      <div class="homecard add-recipe-card">
-      <% if signed_in? %>
-        <%current_user.planned_meals.find_by(date: Date.today) %>
+      <div class="homecard add-recipe-card d-flex align-items-center justify-content-center">
+      <% if user_signed_in? && !current_user.planned_meals.find_by(date: Date.today).nil? %>
 
-          <% recipe = current_user.planned_meals.any? ? current_user.planned_meals.first.recipe : Recipe.last %>
+          <% recipe = current_user.planned_meals.find_by(date: Date.today).recipe %>
           <img src="<%= recipe.image %>" class="card-image" alt="<%= recipe.title %>">
 
           <div class="homecard-content">
@@ -57,8 +56,8 @@
 
     <div class="col-12 col-lg-6 justify-content-center d-flex flex-column">
       <div class="d-flex justify-content-between align-items-center">
-        <h4 class="mt-3"><b>Search by category</b></h4>
-        <%= link_to 'See all', recipes_path, class: 'btn btn-link text-dark text-decoration-none ml-auto' %>
+        <%# <h4 class="mt-3"><b>Search by category</b></h4> %>
+        <%= link_to 'See all', recipes_path, class: 'btn btn-link text-dark text-decoration-none ml-auto fw-light mt-3' %>
       </div>
       <div class="mt-3 category-scroll">
         <% @categories.each do |category|  %>
@@ -80,11 +79,11 @@
               <div class="card-scroll">
                 <img src="<%= recipe.image %>" class="card-image-scroll" alt="<%= recipe.title %>">
                 <div class="card-content">
-                  <%= link_to recipe.title, recipe_path(recipe), class: "card-title" %>
-                  <p class="card-text"><%= recipe.category.split(', ')[0].capitalize %></p>
+                  <%= link_to recipe.title, recipe_path(recipe), class: "card-title fw-bold" %>
+                  <p class="card-text fw-light"><%= recipe.category.split(', ')[0].capitalize %></p>
                 </div>
 
-                <i id="plus-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%=recipe.id%>"><%= image_tag 'plus.svg', class: "add-button" %></i>
+                <i id="plus-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%=recipe.id%>"><%= image_tag 'plus.svg', class: "add-button w-12" %></i>
 
                 <div class="modal fade" id="staticBackdrop<%=recipe.id%>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                   <div class="modal-dialog">
@@ -124,12 +123,6 @@
                     </div>
                   </div>
                 </div>
-
-
-
-
-
-
 
 
               </div>
