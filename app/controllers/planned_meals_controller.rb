@@ -24,7 +24,7 @@ class PlannedMealsController < ApplicationController
   def destroy
     @planned_meal = current_user.planned_meals.find(params[:id])
     @planned_meal.destroy
-    redirect_to planned_meals_path, notice: 'Recipe deleted successfully'
+    redirect_to request.referrer, notice: 'Recipe deleted successfully'
   end
 
   private
