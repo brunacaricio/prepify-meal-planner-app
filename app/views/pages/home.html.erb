@@ -28,7 +28,7 @@
     <%= render "shared/search" %>
 
     <div class="bigcard col-12 col-lg-8 mb-3 mt-3">
-      <h3><%= link_to 'Today', planned_meals_path, class: 'subparagraph' %></h3>
+      <h3 class="mb-3"><%= link_to 'Today', planned_meals_path, class: 'subparagraph' %></h3>
 
       <div class="homecard add-recipe-card d-flex align-items-center justify-content-center">
       <% if user_signed_in? && !current_user.planned_meals.find_by(date: Date.today).nil? %>
