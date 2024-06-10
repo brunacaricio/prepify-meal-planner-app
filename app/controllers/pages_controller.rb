@@ -2,6 +2,8 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
   def home
+    @planned_meal = PlannedMeal.new
+    
     if params[:categ].present? && params[:categ] != "All"
       @recipes = Recipe.where("category ILIKE ?", "%#{params[:categ]}%")
     else

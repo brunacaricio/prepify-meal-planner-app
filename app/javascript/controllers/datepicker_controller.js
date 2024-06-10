@@ -7,6 +7,7 @@ export default class extends Controller {
       minDate: "today",
       enableTime: false,
       dateFormat: "Y-m-d",
+      disableMobile: "true"
     })
   }
 }

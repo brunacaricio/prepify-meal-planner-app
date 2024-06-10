@@ -1,0 +1,32 @@
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Where do you want to add this recipe?</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="button-container">
+            <%= form_with url: recipe_favorites_path(recipe_id: @recipe.id), method: :post, class: "d-inline" do %>
+            <button type="submit" class="btn btn-outline-primary d-flex justify-content-center mx-auto mt-3 p-1">
+              My Favorites <i class="fa-solid fa-heart p-1"></i>
+            </button>
+              <% end %>
+            <hr>
+            <%= simple_form_for [@recipe, @planned_meal] do |f| %>
+              <div class="row">
+                <div class="col-md-6">
+                  <%= f.input :date, as: :string, input_html: { id: "date", data: { controller: "datepicker" }, class: "form-control" }, label: false %>
+                </div>
+                <div class="col-md-6">
+                  <%= f.button :submit, "Add to my Calendar", class: "btn btn-outline-primary d-flex justify-content-center mx-auto mt-3 p-1" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
