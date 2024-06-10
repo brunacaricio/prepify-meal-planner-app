@@ -19,11 +19,16 @@ export default class extends Controller {
     .then((data)=>{
       this.formTarget.outerHTML = data.form
 
-      Swal.fire({
-        title: 'Success',
-        text: 'Recipe Succesfully added to your planned meals ;)',
-        icon: 'success'
-      });
+      if (data.success){
+        Swal.fire({
+          title: 'Success',
+          text: 'Recipe Succesfully added to your planned meals ;)',
+          icon: 'success'
+        });
+      }
+
+
+
 
     })
   }
