@@ -16,7 +16,7 @@ class PlannedMealsController < ApplicationController
     if @planned_meal.save
       respond_to do |format|
         format.html { redirect_to recipes_planned_meals_path }
-        format.json { render json: { form: render_to_string(partial: 'recipes/form', formats: [:html], locals: { planned_meal: PlannedMeal.new, recipe: @recipe }) } }
+        format.json { render json: { form: render_to_string(partial: 'recipes/form', formats: [:html], locals: { planned_meal: PlannedMeal.new, recipe: @recipe }), success: true } }
       end
     else
       respond_to do |format|
