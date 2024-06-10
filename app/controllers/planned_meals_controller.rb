@@ -1,6 +1,9 @@
 class PlannedMealsController < ApplicationController
   def index
     @planned_meals = current_user.planned_meals
+
+    future_meals = @planned_meals.where.not(date: Date.today..Date.today + 6).order("date ASC")
+    @future_meals_hash = future_meals.group_by(&:date)
   end
 
   def create
