@@ -45,33 +45,39 @@ if latest_file
 
   (2..ingredient_sheet.last_row).each do |row|
 
-    Ingredient.create(
-      name: ingredient_sheet.cell(row,2) ,
-      aisle: ingredient_sheet.cell(row,3)
+    i = Ingredient.new(
+      name: ingredient_sheet.cell(row,2),
     )
+    ingredient_sheet.cell(row,3) == "" ? i.aisle = "Common ingredients" : i.aisle = ingredient_sheet.cell(row,3)
+    i.save!
   end
 
   ingredient_recipe_sheet = workbook.sheet(2)
 
   (2..ingredient_recipe_sheet.last_row).each do |row|
     new_recipe_ingredient = RecipeIngredient.new(
-      quantity: ingredient_recipe_sheet.cell(row,2).ceil,
-      unit: ingredient_recipe_sheet.cell(row, 3),
     )
 
-    recipe = Recipe.find_by(title: ingredient_recipe_sheet.cell(row,8))
+    if ingredient_recipe_sheet.cell(row, 3) == 'Tbsps' || ingredient_recipe_sheet.cell(row, 3) == "Tbs" ||ingredient_recipe_sheet.cell(row, 3) == "Tbsp"
+      new_recipe_ingredient.unit = "ml"
+      new_recipe_ingredient.quantity = (ingredient_recipe_sheet.cell(row, 2)*15).ceil
 
+    elsif ingredient_recipe_sheet.cell(row, 3) == "tsps" ||  ingredient_recipe_sheet.cell(row, 3) == "tsp"
+      new_recipe_ingredient.unit = "ml"
+      new_recipe_ingredient.quantity = (ingredient_recipe_sheet.cell(row, 2)*5).ceil
+    else
+      new_recipe_ingredient.unit = ingredient_recipe_sheet.cell(row, 3)
+      new_recipe_ingredient.quantity = ingredient_recipe_sheet.cell(row, 2)
+    end
+    recipe = Recipe.find_by(title: ingredient_recipe_sheet.cell(row,8))
     new_recipe_ingredient.recipe = recipe
     new_recipe_ingredient.recipe_title = recipe.title
 
-
     ingredient = Ingredient.find_by(name: ingredient_recipe_sheet.cell(row,9))
-
     new_recipe_ingredient.ingredient = ingredient
     new_recipe_ingredient.ingredient_name = ingredient.name
 
     new_recipe_ingredient.save!
-
   end
 
 else
@@ -106,8 +112,7 @@ array_of_ids.each do |id|
   if data["cuisines"].join(" ") == ""
     recipe.category = "italian"
   else
-    string = "italian"
-    recipe.category = "#{string}, #{data["cuisines"].join(", ")}"
+    recipe.category = "#{data["cuisines"].join(", ")}"
   end
 
   if data["diets"].join(" ") == ""
