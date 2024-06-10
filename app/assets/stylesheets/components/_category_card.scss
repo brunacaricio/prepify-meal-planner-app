@@ -1,9 +1,9 @@
 .card-category {
   display: inline-block;
   font-size: 12px;
-  color: rgb(251, 195, 93);
+  color: rgb(255, 255, 255);
   font-weight: 600;
-  background-color:black;
+  background-color: $orange;
   border: none;
   margin: 5px;
   padding: 10px 15px;
@@ -15,6 +15,6 @@
 }
 
 .card-category-active {
-  background-color: $orange;
-  color: white;
+  background-color: white;
+  color: $orange;
 }
