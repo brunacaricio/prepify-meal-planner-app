@@ -14,10 +14,15 @@ class PlannedMealsController < ApplicationController
     @planned_meal.recipe = @recipe
 
     if @planned_meal.save
-      redirect_to planned_meals_path
+      respond_to do |format|
+        format.html { redirect_to recipes_planned_meals_path }
+        format.json { render json: { form: render_to_string(partial: 'recipes/form', formats: [:html], locals: { planned_meal: PlannedMeal.new, recipe: @recipe }), success: true } }
+      end
     else
-      # flash[:alert] = 'Your recipe could not be added to the calendar...'
-      redirect_to request.referrer, notice: 'Recipe could not be saved - hint: Select a day !'
+      respond_to do |format|
+        format.html { redirect_to recipes_planned_meals_path, status: :unprocessable_entity}
+        format.json { render json: { form: render_to_string(partial: 'recipes/form', formats: [:html], locals: { planned_meal: @planned_meal, recipe: @recipe }) } }
+      end
     end
   end
 

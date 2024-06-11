@@ -12,7 +12,7 @@
 
     <% else %>
       <% @aisle_hash.each do |key,items| %>
-        <p class= "py-1"><b><%= key %></b></p>
+        <p class= "pt-3"><b><%= key %></b></p>
         <% items.each do |item| %>
           <% ingr = Ingredient.find_by(id: item.ingredient_id) %>
           <% recip_ingr = RecipeIngredient.find_by(id: item.recipe_ingredient_id) %>

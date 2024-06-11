@@ -23,19 +23,21 @@
               </button>
                 <% end %>
             <% end %>
-
             <hr>
-
-            <%= simple_form_for [@recipe, @planned_meal] do |f| %>
-              <div class="row">
-                <div class="col-md-6 text-center">
-                  <%= f.input :date, as: :string, input_html: { id: "date", data: { controller: "datepicker" }, class: "mt-2 form-control text-center mx-auto w-50", placeholder: "Select a day" }, label: false %>
+            <div data-controller= "add-to-calendar">
+              <%= simple_form_for [@recipe, @planned_meal], data: { add_to_calendar_target: "form", action:"submit->add-to-calendar#send"} do |f| %>
+                <div class="row justify-content-center">
+                  <div class="col-md-6 text-center">
+                    <%= f.input :date, as: :string, input_html: { id: "date", data: { controller: "datepicker", add_to_calendar_target: "input"}, class: "form-control text-center mx-auto w-50", placeholder: "Select a day" }, label: false %>
+                  </div>
                 </div>
-                <div class="col-md-6">
-                  <%= f.button :submit, "Add to my calendar", class: "btn orange-btn d-flex justify-content-center mx-auto mt-2 mb-3 p-2" %>
+                <div class="row justify-content-center">
+                  <div class="col-md-6">
+                    <%= f.button :submit, "Add to my calendar", class: "btn orange-btn d-flex justify-content-center mx-auto mt-2 mb-3 p-2" %>
+                  </div>
                 </div>
-              </div>
-            <% end %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
@@ -53,9 +55,9 @@
     <div data-controller="toggle" class="mt-2">
 
       <div class="showbuttons">
-        <button data-action="click->toggle#fire1" class="showbutton"> Ingredients
+        <button data-action="click->toggle#fire1" data-toggle-target="ingredient-button" class="showbutton"> Ingredients
         </button>
-        <button data-action="click->toggle#fire2" class="showbutton"> Instructions
+        <button data-action="click->toggle#fire2" data-toggle-target="instruction-button" class="showbutton"> Instructions
         </button>
       </div>
 
