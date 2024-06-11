@@ -6,7 +6,6 @@
     <% if @planned_meals.empty? %>
       <%= link_to 'Search for recipe ideas', recipes_path, class: "p-3 mb-2 btn orange-btn text-light" %>
     <% else %>
-      <h4 class="mb-2"><b>The next 7 days:</b></h4>
       <% (Date.today..Date.today + 6).each do |day| %>
         <h4><b><%= day.strftime("%A") %></b></h4>
         <hr>
