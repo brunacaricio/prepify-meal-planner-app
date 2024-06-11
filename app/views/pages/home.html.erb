@@ -19,11 +19,11 @@
         </div>
         <div class="col-10">
           <% if user_signed_in? %>
-            <h4><b>Hello <%= current_user.username %></b></h4>
+            <h4><b>Hello, <%= current_user.username %>!</b></h4>
           <% else %>
-            <h4><b>Hello</b></h4>
+            <h4><b>Hello!</b></h4>
           <% end %>
-          <p class="fw-light">What are you cooking this week?</p>
+          <h6 class="fw-light"><b>What are you cooking this week?</b></h6>
         </div>
       </div>
     </div>
