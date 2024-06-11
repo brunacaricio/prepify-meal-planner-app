@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   end
 
+  resources :grocery_lists do
+    resources :grocery_list_items, only: :update
+  end
+
   resources :favorites, only: %i[index destroy]
   resources :planned_meals, only: %i[index destroy]
 

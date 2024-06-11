@@ -24,6 +24,14 @@ class GroceryListsController < ApplicationController
     redirect_to grocery_list_path
   end
 
+  def check
+    @grocery_list = current_user.grocery_lists.last
+    item = Ingredient.find_by(id: item.ingredient_id)
+    item.bought = !item.bought
+    item.save!
+    redirect_to grocery_lists_path
+  end
+
   private
 
   def grocery_list_params
