@@ -25,7 +25,7 @@
               <div class="card">
                   <img src="<%= recipe.image %>" class="card-image" alt="<%= recipe.title %>">
                   <div class="card-content">
-                      <%= link_to recipe.title, recipe_path(recipe), class: "card-title" %>
+                      <b><%= link_to recipe.title, recipe_path(recipe), class: "card-title" %></b>
                       <p class="card-text"><%= recipe.category.split(', ')[0] %></p>
                   </div>
 
