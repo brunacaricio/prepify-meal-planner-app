@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="toggle"
 export default class extends Controller {
 
-  static targets = ["ingredients", "instructions", "buttons"]
+  static targets = ["ingredients", "instructions", "button"]
   connect() {
     this.buttonsTargets.forEach((button) => {
       button.addEventListener('click', () => {
