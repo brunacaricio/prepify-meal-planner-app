@@ -15,14 +15,7 @@ $gray: #E4E4E4;
 $dark-gray: rgb(84, 84, 84);
 
 body {
-  background-color: #da2a2af7;
-  font-family: $poppins;
-  margin-bottom: 12vh;
-}
-
-body {
   margin: 0;
-  // overflow-x: hidden;
   overflow-y: auto;
   padding: 0;
   width: 100%;
@@ -31,6 +24,8 @@ body {
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
+  font-family: $poppins;
+  margin-bottom: 12vh;
 }
 
 .search-container {
@@ -56,6 +51,7 @@ body {
   text-decoration: none;
   font-size: 24px;
 }
+
 h3 {
   margin: 0;
 }
@@ -84,20 +80,23 @@ a {
   justify-content: space-between;
 }
 
+.showbutton-active {
+  background-color: white;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  color: $orange;
+  font-weight: bold;
+  padding: 9px 20px;
+  border: 2px solid #EA9F0E;
+  }
 
 .showbutton {
   background-color: $orange;
-  border-radius: 12px;
-  margin-bottom: 12px;
   color: white;
   padding: 9px 20px;
   border-style: none;
-}
-
-.showbutton .active {
-  background-color: white;
-  color: $orange;
-
+  border-radius: 12px;
+  margin-bottom: 12px;
 }
 
 .recipe-grid {
@@ -146,4 +145,9 @@ a {
 
 .search-button {
   border-radius: 12px;
+}
+
+.blur {
+  backdrop-filter: blur(5px);
+  height: 100%;
 }
