@@ -16,10 +16,15 @@
         <% items.each do |item| %>
           <% ingr = Ingredient.find_by(id: item.ingredient_id) %>
           <% recip_ingr = RecipeIngredient.find_by(id: item.recipe_ingredient_id) %>
-            <li class="ingredient-card mt-2">
-              <div class="grid"><h6><%= ingr.name.capitalize %></h6></div>
-              <div class="grid"><h6><%= item.total_amount %> <%= recip_ingr.unit %></h6></div>
-            </li>
+            <div class="list">
+              <input type="checkbox" id="checked">
+              <label for="checked" style="width:95%">
+                <li class="ingredient-card mt-2">
+                  <div class="grid"><h6><%= ingr.name.capitalize %></h6></div>
+                  <div class="grid"><h6><%= item.total_amount %> <%= recip_ingr.unit %></h6></div>
+                </li>
+              </label>
+            </div>
           <% end %>
       <% end %>
     <% end %>
