@@ -66,7 +66,7 @@ if latest_file
       new_recipe_ingredient.unit = "ml"
       new_recipe_ingredient.quantity = (ingredient_recipe_sheet.cell(row, 2)*5).ceil
 
-    elsif ingredient_recipe_sheet(row, 3) == "servings" || ingredient_recipe_sheet(ro w, 3) == "serving"
+    elsif ingredient_recipe_sheet.cell(row, 3) == "servings" || ingredient_recipe_sheet.cell(row, 3) == "serving"
       new_recipe_ingredient.unit = "cups"
       new_recipe_ingredient.quantity = ingredient_recipe_sheet.cell(row, 2).ceil
 
