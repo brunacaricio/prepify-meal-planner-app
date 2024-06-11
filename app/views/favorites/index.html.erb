@@ -2,7 +2,7 @@
 
   <h2><b>Favorite recipes</b></h2>
 
-  <%= render "shared/search" %>
+  <%= render "shared/search_favorite" %>
 
   <div class="favorite-grid pt-4">
 
@@ -11,28 +11,31 @@
       <div class="showcard">
         <img src="<%= favorite.recipe.image %>" class="showcard-image" alt="<%= favorite.recipe.title %>">
         <div class="card-content">
-          <h6><b><%= link_to favorite.recipe.title, recipe_path(favorite.recipe), class: "card-title" %></b></h6>
+          <h6><b><%= link_to favorite.recipe.title, recipe_path(favorite.recipe), class: "card-title pr-3" %></b></h6>
           <p class="card-text"><%= favorite.recipe.category.split(', ')[0] %></p>
         </div>
         <%= image_tag 'plus.svg', class: "add-button" %>
+        <%= link_to favorite_path(favorite), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "delete-button-favorites" do %>
+          <%= image_tag 'delete.svg' %>
+        <% end %>
 
         <i id="plus-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><%= image_tag 'plus.svg', class: "add-button" %></i>
 
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog">
+          <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel"> Would you like to add this recipe to your Calendar?</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <div class="modal-header d-flex justify-content-center">
+                <h5 class="modal-title" id="staticBackdropLabel">Add it to your calendar?</h5>
               </div>
+                <button type="button" class="btn-close btn-close-fav" data-bs-dismiss="modal" aria-label="Close"></button>
               <div class="button-container">
                 <%= simple_form_for [favorite.recipe, @planned_meal] do |f| %>
                   <div class="row">
-                    <div class="col-md-6">
-                      <%= f.input :date, as: :string, input_html: { id: "date", data: { controller: "datepicker" }, class: "form-control", placeholder: "Select a day" }, label: false %>
+                    <div class="col-md-6 text-center">
+                      <%= f.input :date, as: :string, input_html: { id: "date", data: { controller: "datepicker" }, class: "mt-2 form-control text-center mx-auto w-50", placeholder: "Select a day" }, label: false %>
                     </div>
                     <div class="col-md-6">
-                      <%= f.button :submit, "Add to my Calendar", class: "btn btn-outline-primary d-flex justify-content-center mx-auto mt-3 p-1" %>
+                      <%= f.button :submit, "Add it to my calendar", class: "btn orange-btn d-flex justify-content-center mx-auto mt-3 mb-3 p-2" %>
                     </div>
                   </div>
                 <% end %>

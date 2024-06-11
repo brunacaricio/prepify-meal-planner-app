@@ -7,7 +7,6 @@ class RecipesController < ApplicationController
     end
 
     @planned_meal = PlannedMeal.new
-
   end
 
   def show
