@@ -28,21 +28,6 @@ body {
   margin-bottom: 12vh;
 }
 
-.search-container {
-  display: flex;
-  flex-direction: column;
-  padding: 12px 20px;
-}
-
-.search-container, .h5 {
-  backdrop-filter: blur(5px);
-}
-
-.search-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
 
 .indexpage-title {
   display: flex;
@@ -60,95 +45,8 @@ h3 {
   margin: 0;
 }
 
-.favorite-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 20px;
-}
-
-.favorite-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 12px 20px;
-}
-
 a {
   text-decoration: none;
-}
-
-.showbuttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.showbutton-active {
-  background-color: white;
-  border-radius: 12px;
-  margin-bottom: 12px;
-  color: $orange;
-  font-weight: bold;
-  padding: 9px 20px;
-  border: 2px solid #EA9F0E;
-  }
-
-.showbutton {
-  background-color: $orange;
-  color: white;
-  padding: 9px 20px;
-  border-style: none;
-  border-radius: 12px;
-  margin-bottom: 12px;
-}
-
-.recipe-grid {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.ingredient-card {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  border-style: solid;
-  border-color: orange;
-  border-radius: 18px;
-  padding-left: 18px;
-  padding-right: 18px;
-  padding-top: 10px;
-  background-color: white;
-}
-
-.instruction-card {
-  border-radius: 18px;
-  padding-left: 18px;
-  padding-right: 18px;
-  padding-top: 10px;
-  background-color:#edededd9;
-}
-
-
-.instructions-container {
-  display: grid;
-  gap: 20px;
-}
-
-
-.search-bar {
-  border-radius: 10px;
-}
-
-.form-control {
-  border-radius: 11px;
-  background-color: white;
-  font-weight: 200;
-}
-
-.search-button {
-  border-radius: 12px;
 }
 
 .blur {

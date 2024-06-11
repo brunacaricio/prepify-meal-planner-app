@@ -10,3 +10,26 @@
   // -webkit-overflow-scrolling: touch;
   // white-space: nowrap;
 }
+
+.ingredient-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-style: solid;
+  border-color: orange;
+  border-radius: 18px;
+  padding-left: 18px;
+  padding-right: 18px;
+  padding-top: 10px;
+  background-color: white;
+}
+
+.ingredient-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 15px;
+  background: white;
+  border-radius: 17px;
+  margin-bottom: 5px;
+
+}
