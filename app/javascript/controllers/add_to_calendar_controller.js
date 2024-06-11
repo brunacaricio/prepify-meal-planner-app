@@ -22,7 +22,7 @@ export default class extends Controller {
       if (data.success){
         Swal.fire({
           title: 'Success',
-          text: 'Recipe Succesfully added to your planned meals ;)',
+          text: 'Recipe succesfully added to your planned meals ;)',
           icon: 'success'
         });
       }

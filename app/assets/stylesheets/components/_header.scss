@@ -1,0 +1,13 @@
+.header-pages {
+  height: 30px;
+  width: 100px;
+  background-color: $orange;
+  position: fixed; /* Keeps the header fixed at the top */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Ensures the header is on top of other elements */
+  display: flex; /* Use flexbox to center content */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}

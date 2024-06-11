@@ -3,7 +3,9 @@ class PagesController < ApplicationController
 
   def home
     @planned_meal = PlannedMeal.new
-    
+
+    params[:categ] ||= "All"
+
     if params[:categ].present? && params[:categ] != "All"
       @recipes = Recipe.where("category ILIKE ?", "%#{params[:categ]}%")
     else
