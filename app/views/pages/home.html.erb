@@ -48,7 +48,7 @@
                   </div>
                   <div class="button-container">
                       <div data-controller="add-to-favorites">
-                        <% if current_user.favorites.exists?(recipe_id: recipe.id) %>
+                        <% if user_signed_in? && current_user.favorites.exists?(recipe_id: recipe.id) %>
                           <button type="button" data-add-to-favorites-target="button" class="btn btn-outline-success d-flex justify-content-center mx-auto mt-3 p-1" disabled> Already saved in my favorites! </button>
                         <% else %>
                           <%= form_with url: recipe_favorites_path(recipe_id: recipe.id), data: {add_to_favorites_target: "form", action:"submit->add-to-favorites#send"}, method: :post, class: "d-inline" do %>
@@ -121,7 +121,7 @@
                   </div>
                   <div class="button-container">
                       <div data-controller="add-to-favorites">
-                        <% if current_user.favorites.exists?(recipe_id: recipe.id) %>
+                        <% if user_signed_in? && current_user.favorites.exists?(recipe_id: recipe.id) %>
                           <button type="button" data-add-to-favorites-target="button" class="btn btn-outline-success d-flex justify-content-center mx-auto mt-3 p-1" disabled> Already saved in my favorites! </button>
                         <% else %>
                           <%= form_with url: recipe_favorites_path(recipe_id: recipe.id), data: {add_to_favorites_target: "form", action:"submit->add-to-favorites#send"}, method: :post, class: "d-inline" do %>
