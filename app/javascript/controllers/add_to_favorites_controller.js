@@ -1,27 +1,24 @@
 import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
-  static targets = ["form","input"]
+  static targets = ["form", "button"]
   connect() {
   }
-  send(event) {
+  send(event){
     event.preventDefault()
-    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-
     fetch(this.formTarget.action,{
       method: "POST",
       headers: {
-        "Accept":"application/json",
-        "X-CSRF-Token": csrfToken
-      },
-      body: new FormData(this.formTarget)
+        "Accept": "application/json"
+      }, body: new FormData(this.formTarget)
     })
     .then(response => response.json())
-    .then((data)=>{
+    .then((data) => {
+      console.log(data)
       this.formTarget.outerHTML = data.form
       if (data.success){
         Swal.fire({
           title: 'Success',
-          text: 'Recipe succesfully added to your planned meals ;)',
+          text: 'Recipe succesfully added to your Favorites ;)',
           icon: 'success'
         });
       }
