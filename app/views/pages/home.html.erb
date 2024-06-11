@@ -1,3 +1,8 @@
+<div class="header-pages-home">
+  <%= image_tag "prepify-bowl.svg", alt: "Prepify Logo", class: "header-logo" %>
+  <h3 class="header-title"><b>Prepify</b></h3>
+</div>
+
 <div class="parent-container mt-3">
   <div class="row justify-content-center">
 
@@ -84,9 +89,9 @@
                   <p class="card-text fw-light"><%= recipe.category.split(', ')[0].capitalize %></p>
                 </div>
 
-                <i id="plus-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%=recipe.id%>"><%= image_tag 'plus.svg', class: "add-button w-12" %></i>
+                <i id="plus-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= recipe.id %>"><%= image_tag 'plus.svg', class: "add-button w-12" %></i>
 
-                <div class="modal fade" id="staticBackdrop<%=recipe.id%>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal fade" id="staticBackdrop<%= recipe.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -96,7 +101,7 @@
                       <div class="button-container">
 
                         <% if user_signed_in? && current_user.favorites.exists?(recipe_id: recipe.id) %>
-                          <button type="button" class="btn btn-outline-success d-flex justify-content-center mx-auto mt-3 p-1" disabled> Already saved in my Favorites !</button>
+                          <button type="button" class="btn btn-outline-success d-flex justify-content-center mx-auto mt-3 p-1" disabled>Already saved in my favorites!</button>
                         <% else %>
                           <%= form_with url: recipe_favorites_path(recipe_id: recipe.id), method: :post, class: "d-inline" do %>
                           <button type="submit" class="btn orange-btn d-flex justify-content-center mx-auto mt-3 mb-2 p-2">
