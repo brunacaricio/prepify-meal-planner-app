@@ -61,9 +61,9 @@
         </button>
       </div>
 
-      <div class="ingredient-card-scroll" data-toggle-target="ingredients">
+      <div class="ingredient-grid-scroll" data-toggle-target="ingredients">
         <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
-          <li class="ingredient-grid mt-2">
+          <li class="ingredient-card mt-2">
             <div class="grid"><h6><b><%= recipe_ingredient.ingredient.name.capitalize %></b></h6></div>
             <div class="grid"><h6><%= recipe_ingredient.quantity %> <%= recipe_ingredient.unit %></h6></div>
           </li>
