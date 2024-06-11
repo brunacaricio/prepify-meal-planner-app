@@ -84,6 +84,7 @@ a {
 .showbutton .active {
   background-color: white;
   color: $orange;
+
 }
 
 .recipe-grid {
@@ -98,21 +99,27 @@ a {
   justify-content: space-between;
   border-style: solid;
   border-color: orange;
-}
-
-.instruction-card {
-  display: flex;
-  flex-direction: column;
-  background-color: #D9D9D9D9;
   border-radius: 18px;
   padding-left: 18px;
   padding-right: 18px;
   padding-top: 10px;
+  background-color: white;
 }
 
+.instruction-card {
+  border-radius: 18px;
+  padding-left: 18px;
+  padding-right: 18px;
+  padding-top: 10px;
+  background-color:#D9D9D9D9;
+}
+
+
 .instructions-container {
+  display: grid;
   gap: 20px;
 }
+
 
 .search-bar {
   border-radius: 10px;

@@ -33,7 +33,7 @@
       <div class="homecard add-recipe-card d-flex align-items-center justify-content-center bg-white">
         <% if user_signed_in? && !current_user.planned_meals.find_by(date: Date.today).nil? %>
           <% recipe = current_user.planned_meals.find_by(date: Date.today).recipe %>
-          <img src="<%= recipe.image %>" class="card-image" alt="<%= recipe.title %>">
+          <img src="<%= recipe.image %>" class="homecard-image" alt="<%= recipe.title %>">
           <div class="homecard-content">
             <h6 class= "font-weight-bold"><b><%= link_to recipe.title, recipe_path(recipe), class: "card-title" %></b></h6>
             <p class="card-text font-weight-light"><%= recipe.category.split(', ')[0].capitalize %></p>
