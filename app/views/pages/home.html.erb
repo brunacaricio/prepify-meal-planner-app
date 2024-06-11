@@ -1,3 +1,8 @@
+<div class="header-pages-home">
+  <%= image_tag "prepify-bowl.svg", alt: "Prepify Logo", class: "header-logo" %>
+  <h3 class="header-title"><b>Prepify</b></h3>
+</div>
+
 <div class="parent-container mt-3">
   <div class="row justify-content-center">
 
@@ -30,8 +35,8 @@
     <div class="bigcard col-12 col-lg-8 mb-3 mt-3">
       <h3 class="mb-3"><%= link_to 'Today', planned_meals_path, class: 'subparagraph' %></h3>
 
-      <div class="homecard add-recipe-card d-flex align-items-center justify-content-center">
-      <% if user_signed_in? && !current_user.planned_meals.find_by(date: Date.today).nil? %>
+      <div class="homecard add-recipe-card d-flex align-items-center justify-content-center bg-white">
+        <% if user_signed_in? && !current_user.planned_meals.find_by(date: Date.today).nil? %>
 
           <% recipe = current_user.planned_meals.find_by(date: Date.today).recipe %>
           <img src="<%= recipe.image %>" class="card-image" alt="<%= recipe.title %>">
@@ -40,11 +45,12 @@
             <h6 class= "font-weight-bold"><b><%= link_to recipe.title, recipe_path(recipe), class: "card-title" %></b></h6>
             <p class="card-text font-weight-light"><%= recipe.category.split(', ')[0].capitalize %></p>
           </div>
+          <%= image_tag 'plus.svg', class: "add-button" %>
 
         <% else %>
           <%= link_to recipes_path do %>
-            <div>
-              <i class="fa-solid fa-plus icon-orange" style="font-size: 36px;"></i>
+            <div class = "d-flex justify-content-center">
+              <%= image_tag 'plus.svg' %>
             </div>
           <% end %>
         <% end %>

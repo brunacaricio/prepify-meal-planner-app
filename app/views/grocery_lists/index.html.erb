@@ -1,10 +1,13 @@
-<div class ="favorite-container mt-4">
-  <h2><b>My grocery list</b></h2>
+<div class="header-pages">
+  <h3><b>My groceries list</b></h3>
+</div>
+
+<div class ="favorite-container">
   <div id="booking-form" class="p-3 container">
-    <p>Hey, <%= current_user.username %>!</p>
-    <p>For when do you want to grocery shop?</p>
+    <p>I want a list from ... to ...</p>
+    <p>Choose a <b>range</b> of dates below:</p>
     <%= simple_form_for [@grocery_list] do |f| %>
-        <%= f.input :start_date, as: :string, input_html: { data: { controller: "grocery-list-datepicker" } }, label: false, plaholder: 'Select these dates' %>
+        <%= f.input :start_date, as: :string, input_html: { data: { controller: "grocery-list-datepicker" } }, label: false, placeholder: 'Select these dates' %>
         <%= f.button :submit, "Generate my list", class: "btn orange-btn mb-3" %>
     <% end %>
       <% if @aisle_hash.nil? || @aisle_hash.empty?%>
@@ -16,10 +19,15 @@
         <% items.each do |item| %>
           <% ingr = Ingredient.find_by(id: item.ingredient_id) %>
           <% recip_ingr = RecipeIngredient.find_by(id: item.recipe_ingredient_id) %>
-            <li class="ingredient-card mt-2">
-              <div class="grid"><h6><%= ingr.name.capitalize %></h6></div>
-              <div class="grid"><h6><%= item.total_amount %> <%= recip_ingr.unit %></h6></div>
-            </li>
+            <div class="list">
+              <input type="checkbox" id="checked">
+              <label for="checked" style="width:95%">
+                <li class="ingredient-card mt-2">
+                  <div class="grid"><h6><%= ingr.name.capitalize %></h6></div>
+                  <div class="grid"><h6><%= item.total_amount %> <%= recip_ingr.unit %></h6></div>
+                </li>
+              </label>
+            </div>
           <% end %>
       <% end %>
     <% end %>

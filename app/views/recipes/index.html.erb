@@ -1,8 +1,8 @@
-<div class="search-container mt-2">
+<div class="header-pages">
+  <h3><b>Search</b></h3>
+</div>
 
-  <div class="indexpage-title pb-2 mt-2">
-    <h3><b>Search</b></h3>
-  </div>
+<div class="search-container mt-2">
 
   <%= render 'shared/search' %>
 
@@ -25,8 +25,8 @@
               <div class="card">
                   <img src="<%= recipe.image %>" class="card-image" alt="<%= recipe.title %>">
                   <div class="card-content">
-                      <%= link_to recipe.title, recipe_path(recipe), class: "card-title" %>
-                      <p class="card-text"><%= recipe.category.split(', ')[0] %></p>
+                    <b><%= link_to recipe.title, recipe_path(recipe), class: "card-title" %></b>
+                    <p class="card-text"><%= recipe.category.split(', ')[0] %></p>
                   </div>
 
 
