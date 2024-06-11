@@ -4,7 +4,7 @@
     <p>Hey, <%= current_user.username %>!</p>
     <p>For when do you want to grocery shop?</p>
     <%= simple_form_for [@grocery_list] do |f| %>
-        <%= f.input :start_date, as: :string, input_html: { data: { controller: "grocery-list-datepicker" } }, label: false, plaholder: 'Select these dates' %>
+        <%= f.input :start_date, as: :string, input_html: { data: { controller: "grocery-list-datepicker" } }, label: false, placeholder: 'Select these dates' %>
         <%= f.button :submit, "Generate my list", class: "btn orange-btn mb-3" %>
     <% end %>
       <% if @aisle_hash.nil? || @aisle_hash.empty?%>

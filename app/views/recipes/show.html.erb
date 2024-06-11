@@ -2,7 +2,7 @@
 
   <div class="recipe-showcard">
     <img src="<%= @recipe.image %>" class="recipe-image" alt="<%= @recipe.title %>">
-    <p class="showcategory category-tag"><%= @recipe.category %></p>
+    <p class="showcategory category-tag"><%= @recipe.category.capitalize %></p>
     <i id="plus-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><%= image_tag 'plus.svg', class: "add-button" %></i>
 
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -18,10 +18,10 @@
               <button class="btn btn-outline-success d-flex justify-content-center mx-auto mt-3 p-1"> Already saved in my favorites!</button>
             <% else %>
               <%= form_with url: recipe_favorites_path(recipe_id: @recipe.id), method: :post, class: "d-inline" do %>
-              <button type="submit" class="btn orange-btn d-flex justify-content-center mx-auto mt-3 p-1">
-                Add to my favorites <i class="fa-solid fa-heart p-2"></i>
-              </button>
-                <% end %>
+                <button type="submit" class="btn orange-btn d-flex justify-content-center mx-auto mt-3 mb-2 p-2">
+                  Add to my favorites <i class="fa-solid fa-heart p-1"></i>
+                </button>
+              <% end %>
             <% end %>
             <hr>
             <div data-controller= "add-to-calendar">
@@ -55,17 +55,17 @@
     <div data-controller="toggle" class="mt-2">
 
       <div class="showbuttons">
-        <button data-action="click->toggle#fire1" data-toggle-target="ingredient-button" class="showbutton"> Ingredients
+        <button data-action="click->toggle#fire1" data-toggle-target="button" class="showbutton"> Ingredients
         </button>
-        <button data-action="click->toggle#fire2" data-toggle-target="instruction-button" class="showbutton"> Instructions
+        <button data-action="click->toggle#fire2" data-toggle-target="button" class="showbutton"> Instructions
         </button>
       </div>
 
-      <div  class="ingredient-card-scroll" data-toggle-target="ingredients">
+      <div class="ingredient-card-scroll" data-toggle-target="ingredients">
         <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
           <li class="ingredient-card mt-2">
             <div class="grid"><h6><b><%= recipe_ingredient.ingredient.name.capitalize %></b></h6></div>
-            <div class="grid"><h6><%= recipe_ingredient.quantity%> <%= recipe_ingredient.unit %></h6></div>
+            <div class="grid"><h6><%= recipe_ingredient.quantity %> <%= recipe_ingredient.unit %></h6></div>
           </li>
           <% end %>
       </div>
