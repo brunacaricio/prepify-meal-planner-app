@@ -5,9 +5,9 @@ export default class extends Controller {
 
   static targets = ["ingredients", "instructions", "button"]
   connect() {
-    this.buttonsTargets.forEach((button) => {
+    this.buttonTargets.forEach((button) => {
       button.addEventListener('click', () => {
-        this.buttonsTargets.forEach((otherButton) => {
+        this.buttonTargets.forEach((otherButton) => {
           otherButton.classList.remove('active')
         })
         button.classList.add('active')
