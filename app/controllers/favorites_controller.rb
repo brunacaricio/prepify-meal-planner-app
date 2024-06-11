@@ -1,6 +1,6 @@
 class FavoritesController < ApplicationController
   def index
-    @favorites = Favorite.all
+    @favorites = current_user.favorites
 
     if params[:query].present?
       @favorites = Favorite.global_search(params[:query])
@@ -11,13 +11,16 @@ class FavoritesController < ApplicationController
 
   def create
     @recipe = Recipe.find(params[:recipe_id])
-
     @favorite = Favorite.new(recipe: @recipe, user: current_user)
-    if @favorite.save!
-      redirect_to request.referrer, notice: 'Successfully saved to favorites!'
-    else
-      flash.now[:alert] = 'Your recipe could not be added to the calendar...'
-      redirect_to request.referrer, notice: 'Your recipe could not be added to the calendar...'
+
+    respond_to do |format|
+      if @favorite.save
+        format.html { redirect_to favorites_path, notice: 'Successfully saved to favorites!' }
+        format.json { render json: {form: render_to_string(partial: 'form', formats: [:html], locals: { favorite: Favorite.new, recipe: @recipe}), success: true} }
+      else
+        format.html { redirect_to favorites_path, notice: 'Your recipe could not be added to the calendar...'}
+        format.json { render json: { form: render_to_string(partial: 'form', formats: [:html], locals: { favorite: @favorite, recipe: @recipe })}}
+      end
     end
   end
 
