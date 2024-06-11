@@ -122,7 +122,13 @@
                   <div class="button-container">
                       <div data-controller="add-to-favorites">
                         <% if user_signed_in? && current_user.favorites.exists?(recipe_id: recipe.id) %>
-                          <button type="button" data-add-to-favorites-target="button" class="btn btn-outline-success d-flex justify-content-center mx-auto mt-3 p-1" disabled> Already saved in my favorites! </button>
+                          <button type="button" data-add-to-favorites-target="button" class="btn btn-success d-flex justify-content-center mx-auto mt-3 p-1" disabled> Already saved in my favorites </button>
+                        <% elsif !user_signed_in? %>
+                          <%= link_to new_user_session_path do %>
+                            <button type="button" class="btn orange-btn d-flex justify-content-center mx-auto mt-3 p-2 mb-2">
+                              Login to continue
+                            </button>
+                          <% end %>
                         <% else %>
                           <%= form_with url: recipe_favorites_path(recipe_id: recipe.id), data: {add_to_favorites_target: "form", action:"submit->add-to-favorites#send"}, method: :post, class: "d-inline" do %>
                           <button type="submit" class="btn orange-btn d-flex justify-content-center mx-auto mt-2 p-2" data-add-to-favorites-target="button">
@@ -131,21 +137,23 @@
                             <% end %>
                         <% end %>
                       </div>
-                    <hr>
-                    <div data-controller= "add-to-calendar">
-                        <%= simple_form_for [recipe, @planned_meal], data: { add_to_calendar_target: "form", action:"submit->add-to-calendar#send"} do |f| %>
-                          <div class="row justify-content-center">
-                            <div class="col-md-6 text-center">
-                              <%= f.input :date, as: :string, input_html: { id: "date", data: { controller: "datepicker", add_to_calendar_target: "input"}, class: "form-control text-center mx-auto w-50", placeholder: "Select a day" }, label: false %>
+                    <% if user_signed_in? %>
+                      <hr>
+                      <div data-controller= "add-to-calendar">
+                          <%= simple_form_for [recipe, @planned_meal], data: { add_to_calendar_target: "form", action:"submit->add-to-calendar#send"} do |f| %>
+                            <div class="row justify-content-center">
+                              <div class="col-md-6 text-center">
+                                <%= f.input :date, as: :string, input_html: { id: "date", data: { controller: "datepicker", add_to_calendar_target: "input"}, class: "form-control text-center mx-auto w-50", placeholder: "Select a day" }, label: false %>
+                              </div>
                             </div>
-                          </div>
-                          <div class="row justify-content-center">
-                            <div class="col-md-6">
-                              <%= f.button :submit, "Add to my calendar", class: "btn orange-btn d-flex justify-content-center mx-auto mt-2 mb-3 p-2" %>
+                            <div class="row justify-content-center">
+                              <div class="col-md-6">
+                                <%= f.button :submit, "Add to my calendar", class: "btn orange-btn d-flex justify-content-center mx-auto mt-2 mb-3 p-2" %>
+                              </div>
                             </div>
-                          </div>
-                        <% end %>
+                          <% end %>
                       </div>
+                    <% end %>
                   </div>
                 </div>
               </div>
