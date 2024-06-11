@@ -78,6 +78,31 @@
   grid-template-columns: 1fr 1fr;
 }
 
+.showbuttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.showbutton-active {
+  background-color: white;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  color: $orange;
+  font-weight: bold;
+  padding: 9px 20px;
+  border: 2px solid #EA9F0E;
+  }
+
+.showbutton {
+  background-color: $orange;
+  color: white;
+  padding: 9px 20px;
+  border-style: none;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
 .ingredient-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -87,7 +112,6 @@
   margin-bottom: 5px;
 
 }
-
 
 .indexnum {
   width: 10px;
