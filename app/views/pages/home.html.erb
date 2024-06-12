@@ -2,12 +2,9 @@
   <%= image_tag "prepify-bowl.svg", alt: "Prepify Logo", class: "header-logo" %>
   <h3 class="header-title"><b>Prepify</b></h3>
 </div>
-<<<<<<< HEAD
 
 <div class="parent-container mt-3">
-=======
-<div class="parent-container mt-2">
->>>>>>> b2f612da506acdabb6754017be6b35c38ac1f6ae
+
   <div class="row justify-content-center">
     <div class="col-12 col-lg-4">
       <div class="row">
@@ -33,13 +30,10 @@
       </div>
     </div>
     <%= render "shared/search" %>
-<<<<<<< HEAD
+
 
     <div class="bigcard col-12 col-lg-8 mb-3 mt-3">
 
-=======
-    <div class="bigcard col-12 col-lg-8 mb-3 mt-2">
->>>>>>> b2f612da506acdabb6754017be6b35c38ac1f6ae
       <h3 class="mb-3"><%= link_to 'Today', planned_meals_path, class: 'subparagraph' %></h3>
 
       <div class ="hero">
@@ -116,9 +110,9 @@
         <h6 class="mt-2"><b>Search by category</b></h6>
         <%= link_to 'See all', recipes_path, class: 'btn btn-link text-dark text-decoration-none ml-auto fw-light mt-2' %>
       </div>
-      <div class="category-scroll">
+      <div class="category-scroll" data-controller="ajax-search">
         <% @categories.each do |category|  %>
-          <div class="category-button"><%= link_to "#{category}", root_path(categ: "#{category}"), class: params[:categ] == category ? "card-category card-category-active" : "card-category" %></div>
+          <div class="category-button" data-ajax-search-target="input"><%= link_to "#{category}", root_path(categ: "#{category}", anchor: "recipes-list"), class: params[:categ] == category ? "card-category card-category-active" : "card-category" %></div>
         <% end %>
       </div>
     </div>
@@ -127,7 +121,7 @@
 <div class="col-12 col-lg-6 justify-content-center">
   <div class="row">
     <div class="col-12">
-      <div class="recipe-cards">
+      <div class="recipe-cards" id="recipes-list">
         <% @recipes.each do |recipe| %>
           <div class="card-scroll">
             <img src="<%= recipe.image %>" class="card-image-scroll" alt="<%= recipe.title %>">
