@@ -92,8 +92,7 @@ puts "done with excel"
 puts 'Now Importing with the api'
 
 
-array_of_ids = [
-]
+array_of_ids = []
 
 count = 0
 
@@ -160,17 +159,6 @@ end
 
 puts "You just generated #{count} recipes ;)"
 
-puts 'generating a user'
 
-user = User.new(username: "ObamaUSA", email: "obama@usa.com", password: "123456")
-file = URI.open("https://openclipart.org/image/800px/313668")
-user.photo.attach(io: file, content_type: "image/png", filename: "obama picture")
-
-user.save!
-date = Time.now
-3.times do
-  recipe = Recipe.all.sample
-  PlannedMeal.create!(recipe: recipe, user: user, date: date)
-end
 
 puts "done :)"
