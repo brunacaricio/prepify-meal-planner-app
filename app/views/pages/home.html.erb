@@ -92,9 +92,9 @@
         <h6 class="mt-2"><b>Search by category</b></h6>
         <%= link_to 'See all', recipes_path, class: 'btn btn-link text-dark text-decoration-none ml-auto fw-light mt-2' %>
       </div>
-      <div class="category-scroll">
+      <div class="category-scroll" data-controller="ajax-search">
         <% @categories.each do |category|  %>
-          <div class="category-button"><%= link_to "#{category}", root_path(categ: "#{category}"), class: params[:categ] == category ? "card-category card-category-active" : "card-category" %></div>
+          <div class="category-button" data-ajax-search-target="input"><%= link_to "#{category}", root_path(categ: "#{category}", anchor: "recipes-list"), class: params[:categ] == category ? "card-category card-category-active" : "card-category" %></div>
         <% end %>
       </div>
     </div>
@@ -103,7 +103,7 @@
 <div class="col-12 col-lg-6 justify-content-center">
   <div class="row">
     <div class="col-12">
-      <div class="recipe-cards">
+      <div class="recipe-cards" id="recipes-list">
         <% @recipes.each do |recipe| %>
           <div class="card-scroll">
             <img src="<%= recipe.image %>" class="card-image-scroll" alt="<%= recipe.title %>">
