@@ -1,0 +1,15 @@
+.list .orange-checkbox {
+  background-color: white;
+  border-color: $orange;
+  transform: scale(1.5);
+  margin-bottom: -10px;
+}
+
+
+
+.list .orange-checkbox:checked {
+  background-color: $orange;
+  border-color: $orange;
+  transform: scale(1.5);
+  margin-top: 15px;
+}

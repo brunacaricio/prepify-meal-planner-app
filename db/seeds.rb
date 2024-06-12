@@ -65,6 +65,11 @@ if latest_file
     elsif ingredient_recipe_sheet.cell(row, 3) == "tsps" ||  ingredient_recipe_sheet.cell(row, 3) == "tsp"
       new_recipe_ingredient.unit = "ml"
       new_recipe_ingredient.quantity = (ingredient_recipe_sheet.cell(row, 2)*5).ceil
+
+    elsif ingredient_recipe_sheet.cell(row, 3) == "servings" || ingredient_recipe_sheet.cell(row, 3) == "serving"
+      new_recipe_ingredient.unit = "cups"
+      new_recipe_ingredient.quantity = ingredient_recipe_sheet.cell(row, 2).ceil
+
     else
       new_recipe_ingredient.unit = ingredient_recipe_sheet.cell(row, 3)
       new_recipe_ingredient.quantity = ingredient_recipe_sheet.cell(row, 2)
@@ -87,7 +92,7 @@ puts "done with excel"
 puts 'Now Importing with the api'
 
 
-array_of_ids =[]
+array_of_ids = []
 
 count = 0
 
@@ -154,17 +159,6 @@ end
 
 puts "You just generated #{count} recipes ;)"
 
-puts 'generating a user'
 
-user = User.new(username: "ObamaUSA", email: "obama@usa.com", password: "123456")
-file = URI.open("https://openclipart.org/image/800px/313668")
-user.photo.attach(io: file, content_type: "image/png", filename: "obama picture")
-
-user.save!
-date = Time.now
-3.times do
-  recipe = Recipe.all.sample
-  PlannedMeal.create!(recipe: recipe, user: user, date: date)
-end
 
 puts "done :)"
