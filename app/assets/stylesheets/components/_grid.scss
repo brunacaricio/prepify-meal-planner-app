@@ -1,0 +1,19 @@
+.favorite-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+}
+
+.favorite-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 20px;
+}
+
+.recipe-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

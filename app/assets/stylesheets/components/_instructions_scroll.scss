@@ -2,3 +2,17 @@
   overflow-y: auto;
   height: 400px;
 }
+
+.instruction-card {
+  border-radius: 18px;
+  padding-left: 18px;
+  padding-right: 18px;
+  padding-top: 10px;
+  background-color:#edededd9;
+}
+
+.instructions-container {
+  display: grid;
+  gap: 20px;
+}
+

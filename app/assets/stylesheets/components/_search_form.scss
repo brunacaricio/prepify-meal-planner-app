@@ -1,3 +1,33 @@
 .search-form {
   gap: 5px;
 }
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 20px;
+}
+
+.search-container, .h5 {
+  backdrop-filter: blur(5px);
+}
+
+.search-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.search-button {
+  border-radius: 12px;
+}
+
+.search-bar {
+  border-radius: 10px;
+}
+
+.form-control {
+  border-radius: 11px;
+  background-color: white;
+  font-weight: 200;
+}
