@@ -6,6 +6,15 @@
   cursor: pointer;
 }
 
+.orange-btn-larger {
+  background-color: $orange;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
 .orange-btn-round {
   background-color: $orange;
   font-size: 20px;
