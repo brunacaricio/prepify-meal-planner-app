@@ -2,7 +2,8 @@
   <%= image_tag "prepify-bowl.svg", alt: "Prepify Logo", class: "header-logo" %>
   <h3 class="header-title"><b>Prepify</b></h3>
 </div>
-<div class="parent-container mt-2">
+<div class="parent-container mt-3">
+
   <div class="row justify-content-center">
     <div class="col-12 col-lg-4">
       <div class="row">
@@ -28,65 +29,81 @@
       </div>
     </div>
     <%= render "shared/search" %>
-    <div class="bigcard col-12 col-lg-8 mb-3 mt-2">
+
+    <div class="bigcard col-12 col-lg-8 mb-3 mt-3">
+
+
       <h3 class="mb-3"><%= link_to 'Today', planned_meals_path, class: 'subparagraph' %></h3>
-      <div class="homecard add-recipe-card d-flex align-items-center justify-content-center bg-white">
-        <% if user_signed_in? && !current_user.planned_meals.find_by(date: Date.today).nil? %>
-          <% recipe = current_user.planned_meals.find_by(date: Date.today).recipe %>
-          <img src="<%= recipe.image %>" class="homecard-image" alt="<%= recipe.title %>">
-          <div class="homecard-content">
-            <h6 class= "font-weight-bold"><b><%= link_to recipe.title, recipe_path(recipe), class: "card-title" %></b></h6>
-            <p class="card-text font-weight-light"><%= recipe.category.split(', ')[0].capitalize %></p>
-          </div>
-          <i id="plus-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%=recipe.id%>"><%= image_tag 'plus.svg', class: "add-button w-12" %></i>
-            <div class="modal fade" id="staticBackdrop<%=recipe.id%>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Where do you want to add this recipe?</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="button-container">
-                      <div data-controller="add-to-favorites">
-                        <% if user_signed_in? && current_user.favorites.exists?(recipe_id: recipe.id) %>
-                          <button type="button" data-add-to-favorites-target="button" class="btn btn-outline-success d-flex justify-content-center mx-auto mt-3 p-1" disabled> Already saved in my favorites! </button>
-                        <% else %>
-                          <%= form_with url: recipe_favorites_path(recipe_id: recipe.id), data: {add_to_favorites_target: "form", action:"submit->add-to-favorites#send"}, method: :post, class: "d-inline" do %>
-                          <button type="submit" class="btn orange-btn d-flex justify-content-center mx-auto mt-2 p-2" data-add-to-favorites-target="button">
-                            Add to my favorites <i class="fa-solid fa-heart p-1"> </i>
-                          </button>
-                            <% end %>
-                        <% end %>
-                      </div>
-                    <hr>
-                    <div data-controller= "add-to-calendar">
-                        <%= simple_form_for [recipe, @planned_meal], data: { add_to_calendar_target: "form", action:"submit->add-to-calendar#send"} do |f| %>
-                          <div class="row justify-content-center">
-                            <div class="col-md-6 text-center">
-                              <%= f.input :date, as: :string, input_html: { id: "date", data: { controller: "datepicker", add_to_calendar_target: "input"}, class: "form-control text-center mx-auto w-50", placeholder: "Select a day" }, label: false %>
+
+      <div class ="hero">
+
+        <%# <%= image_tag 'fork.svg' %>
+
+        <div class="homecard add-recipe-card d-flex align-items-center justify-content-center bg-white">
+          <% if user_signed_in? && !current_user.planned_meals.find_by(date: Date.today).nil? %>
+            <% recipe = current_user.planned_meals.find_by(date: Date.today).recipe %>
+            <img src="<%= recipe.image %>" class="homecard-image" alt="<%= recipe.title %>">
+            <div class="homecard-content">
+              <h6 class= "font-weight-bold"><b><%= link_to recipe.title, recipe_path(recipe), class: "card-title" %></b></h6>
+              <p class="card-text font-weight-light"><%= recipe.category.split(', ')[0].capitalize %></p>
+            </div>
+
+            <i id="plus-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%=recipe.id%>"><%= image_tag 'plus.svg', class: "add-button w-12" %></i>
+              <div class="modal fade" id="staticBackdrop<%=recipe.id%>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel">Where do you want to add this recipe?</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="button-container">
+                        <div data-controller="add-to-favorites">
+                          <% if user_signed_in? && current_user.favorites.exists?(recipe_id: recipe.id) %>
+                            <button type="button" data-add-to-favorites-target="button" class="btn btn-outline-success d-flex justify-content-center mx-auto mt-3 p-1" disabled> Already saved in my favorites! </button>
+                          <% else %>
+                            <%= form_with url: recipe_favorites_path(recipe_id: recipe.id), data: {add_to_favorites_target: "form", action:"submit->add-to-favorites#send"}, method: :post, class: "d-inline" do %>
+                            <button type="submit" class="btn orange-btn d-flex justify-content-center mx-auto mt-2 p-2" data-add-to-favorites-target="button">
+                              Add to my favorites <i class="fa-solid fa-heart p-1"> </i>
+                            </button>
+                              <% end %>
+                          <% end %>
+                        </div>
+                      <hr>
+                      <div data-controller= "add-to-calendar">
+                          <%= simple_form_for [recipe, @planned_meal], data: { add_to_calendar_target: "form", action:"submit->add-to-calendar#send"} do |f| %>
+                            <div class="row justify-content-center">
+                              <div class="col-md-6 text-center">
+                                <%= f.input :date, as: :string, input_html: { id: "date", data: { controller: "datepicker", add_to_calendar_target: "input"}, class: "form-control text-center mx-auto w-50", placeholder: "Select a day" }, label: false %>
+                              </div>
                             </div>
-                          </div>
-                          <div class="row justify-content-center">
-                            <div class="col-md-6">
-                              <%= f.button :submit, "Add to my calendar", class: "btn orange-btn d-flex justify-content-center mx-auto mt-2 mb-3 p-2" %>
+                            <div class="row justify-content-center">
+                              <div class="col-md-6">
+                                <%= f.button :submit, "Add to my calendar", class: "btn orange-btn d-flex justify-content-center mx-auto mt-2 mb-3 p-2" %>
+                              </div>
                             </div>
-                          </div>
-                        <% end %>
-                      </div>
+                          <% end %>
+                        </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-        <% else %>
-          <%= link_to recipes_path do %>
-            <div class = "d-flex justify-content-center">
-              <%= image_tag 'plus.svg' %>
-            </div>
+          <% else %>
+            <%= link_to recipes_path do %>
+              <div class = "d-flex justify-content-center flex-column text-black">
+                <%# <p>Plan & Cook</p> %>
+                <%= image_tag 'plus.svg' %>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
+
+        <%# <%= image_tag 'knife.svg' %>
+
       </div>
+
     </div>
+
     <div class="col-12 col-lg-6 justify-content-center d-flex flex-column">
       <div class="d-flex justify-content-between align-items-center">
         <h6 class="mt-2"><b>Search by category</b></h6>
