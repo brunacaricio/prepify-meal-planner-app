@@ -16,10 +16,20 @@ export default class extends Controller {
       console.log(data)
       this.formTarget.outerHTML = data.form
       if (data.success){
-        Swal.fire({
-          title: 'Success',
-          text: 'Recipe succesfully added to your favorites ;)',
-          icon: 'success'
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 1500,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          }
+        });
+        Toast.fire({
+          icon: "success",
+          title: "Recipe added to your favorites"
         });
       }
     })
