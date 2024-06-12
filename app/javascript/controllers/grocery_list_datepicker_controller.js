@@ -3,13 +3,15 @@ import flatpickr from "flatpickr";
 
 export default class extends Controller {
   connect() {
-  flatpickr(this.element, {
-    inline: false,
-    mode: 'range',
-    minDate: "today",
-    enableTime: false,
-    dateFormat: "d-m-Y",
-    disableMobile: "true"
-  })
+    this.element.value = '';
+    flatpickr(this.element, {
+      inline: false,
+      mode: 'range',
+      minDate: "today",
+      enableTime: false,
+      dateFormat: "d-m-Y",
+      disableMobile: "true",
+      defaultDate: null
+    })
   }
 }
