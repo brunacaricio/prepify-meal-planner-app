@@ -37,9 +37,10 @@
 
 .category-tag {
   position: absolute;
-  background-color: green;
+  background-color: white;
   border-radius: 17px;
-  color: white;
+  color: $orange;
+  font-weight: bold;
   bottom: 10px;
   right: 10px;
   padding: 5px 10px;
