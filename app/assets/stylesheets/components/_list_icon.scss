@@ -1,0 +1,21 @@
+.fa-list-check {
+  border-radius: 50%;
+  font-size: 1.2em;
+  position: absolute;
+  margin-top: -10px;
+}
+
+.on {
+  border-color: $orange;
+  background-color: $orange;
+  color: white;
+  box-shadow: 0 0 10px $orange;
+}
+
+.off {
+  border-color: $gray;
+  background-color: white;
+  color: $gray;
+  box-shadow: 0 0 10px $gray;
+
+}
