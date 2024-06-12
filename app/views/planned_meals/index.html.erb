@@ -18,7 +18,7 @@
               <div class="card-planned-meal">
                 <img src="<%= planned.recipe.image %>" class="card-image-planned-meal" alt="<%= planned.recipe.title %>">
                 <div class="card-content-planned-meal">
-                  <%= link_to planned.recipe.title, recipe_path(planned.recipe), class: "card-title" %>
+                  <b><%= link_to planned.recipe.title, recipe_path(planned.recipe), class: "card-title" %></b>
                   <p class="card-text"><%= planned.recipe.category.split(', ')[0] %></p>
                 </div>
                   <%= link_to planned_meal_path(planned.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "delete-button" do %>
