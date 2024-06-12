@@ -1,17 +1,13 @@
 <div class="header-pages">
   <h3><b>Search</b></h3>
 </div>
-
 <div class="search-container mt-2">
-
   <%= render 'shared/search' %>
-
   <div class="row">
       <div class="col-sm-12">
           <h5 class ="pt-3 pb-3"><b>All recipes</b></h5>
       </div>
   </div>
-
   <% if @recipes.empty? %>
     <div class="row">
       <div class="col-sm-12">
@@ -28,10 +24,7 @@
                     <b><%= link_to recipe.title, recipe_path(recipe), class: "card-title" %></b>
                     <p class="card-text"><%= recipe.category.split(', ')[0] %></p>
                   </div>
-
-
                   <i id="plus-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%=recipe.id%>"><%= image_tag 'plus.svg', class: "add-button" %></i>
-
                   <div class="modal fade" id="staticBackdrop<%=recipe.id%>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                       <div class="modal-content">
@@ -74,5 +67,4 @@
             <% end %>
     </div>
   <% end %>
-
 </div>
