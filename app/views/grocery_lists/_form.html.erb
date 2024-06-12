@@ -1,0 +1,4 @@
+
+<%= simple_form_for [grocery_list, item], data: {controller: "checked-list"} do |f| %>
+  <%= f.input :bought, as: :boolean, label: false,boolean_style: :nested, input_html: {class: 'orange-checkbox', data: {action: "click->checked-list#bought"}} %>
+<% end %>

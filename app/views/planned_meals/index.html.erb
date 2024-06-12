@@ -34,8 +34,9 @@
   <div class="text-center mt-4">
     <% if @future_meals_hash.empty? %>
       <hr>
-      <hr>
-      <p>You don't have meals planned beyond this point.</p>
+      <span class="box">
+        <p>You're up to date!<br>Plan meals for the weeks ahead.</p>
+      </span>
     <% else %>
         <hr>
       <h4 class="mb-2"><b>On the next weeks:</b></h4>

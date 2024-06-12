@@ -8,10 +8,13 @@
     <p>Select a <b>range of dates</b> below:</p>
     <%= simple_form_for [@grocery_list] do |f| %>
         <%= f.input :start_date, as: :string, input_html: { data: { controller: "grocery-list-datepicker" } }, label: false, placeholder: 'Select these dates' %>
-        <%= f.button :submit, "Generate my list", class: "btn orange-btn mb-3" %>
+        <%= f.button :submit, "Generate my list", class: "btn orange-btn-larger mb-3" %>
     <% end %>
       <% if @aisle_hash.nil? || @aisle_hash.empty?%>
-      <h2 class="mt-3">Use the above calendar to select the dates or add some meals to your calendar :) </h2>
+      <div class="box">
+        <p class="fw-semibold mt-3">No items yet.</p>
+        <p>Choose dates above or plan meals!</p>
+      </div>
 
     <% else %>
       <% @aisle_hash.sort.each do |key,items| %>
