@@ -7,49 +7,54 @@
   <%= render "shared/search_favorite" %>
 
   <div class="favorite-grid pt-3">
+    <% if @favorites.empty? %>
+    <span class="box">
+      <p class="mt-3">You don't have any favorite recipes yet!</p>
+    </span>
+    <% else %>
+      <% @favorites.each do |favorite| %>
 
-    <% @favorites.each do |favorite| %>
+        <div class="showcard">
+          <img src="<%= favorite.recipe.image %>" class="showcard-image" alt="<%= favorite.recipe.title %>">
+          <div class="card-content">
+            <h6><b><%= link_to favorite.recipe.title.capitalize, recipe_path(favorite.recipe), class: "card-title pr-3" %></b></h6>
+            <p class="card-text"><%= favorite.recipe.category.split(', ')[0] %></p>
+          </div>
+          <%= image_tag 'plus.svg', class: "add-button" %>
+          <%= link_to favorite_path(favorite), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "delete-button-favorites" do %>
+            <%= image_tag 'delete.svg' %>
+          <% end %>
 
-      <div class="showcard">
-        <img src="<%= favorite.recipe.image %>" class="showcard-image" alt="<%= favorite.recipe.title %>">
-        <div class="card-content">
-          <h6><b><%= link_to favorite.recipe.title.capitalize, recipe_path(favorite.recipe), class: "card-title pr-3" %></b></h6>
-          <p class="card-text"><%= favorite.recipe.category.split(', ')[0] %></p>
-        </div>
-        <%= image_tag 'plus.svg', class: "add-button" %>
-        <%= link_to favorite_path(favorite), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "delete-button-favorites" do %>
-          <%= image_tag 'delete.svg' %>
-        <% end %>
+          <i id="plus-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><%= image_tag 'plus.svg', class: "add-button" %></i>
 
-        <i id="plus-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><%= image_tag 'plus.svg', class: "add-button" %></i>
-
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header d-flex justify-content-center">
-                <h5 class="modal-title" id="staticBackdropLabel">Add it to your calendar?</h5>
-              </div>
-                <button type="button" class="btn-close btn-close-fav" data-bs-dismiss="modal" aria-label="Close"></button>
-              <div class="button-container">
-                <div data-controller= "add-to-calendar">
-                  <%= simple_form_for [favorite.recipe, @planned_meal], data: { add_to_calendar_target: "form", action:"submit->add-to-calendar#send"} do |f| %>
-                    <div class="row justify-content-center">
-                      <div class="col-md-6 text-center">
-                        <%= f.input :date, as: :string, input_html: { id: "date", data: { controller: "datepicker", add_to_calendar_target: "input"}, class: "form-control text-center mx-auto w-50", placeholder: "Select a day" }, label: false %>
+          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header d-flex justify-content-center">
+                  <h5 class="modal-title" id="staticBackdropLabel">Add it to your calendar?</h5>
+                </div>
+                  <button type="button" class="btn-close btn-close-fav" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="button-container">
+                  <div data-controller= "add-to-calendar">
+                    <%= simple_form_for [favorite.recipe, @planned_meal], data: { add_to_calendar_target: "form", action:"submit->add-to-calendar#send"} do |f| %>
+                      <div class="row justify-content-center">
+                        <div class="col-md-6 text-center">
+                          <%= f.input :date, as: :string, input_html: { id: "date", data: { controller: "datepicker", add_to_calendar_target: "input"}, class: "form-control text-center mx-auto w-50", placeholder: "Select a day" }, label: false %>
+                        </div>
                       </div>
-                    </div>
-                    <div class="row justify-content-center">
-                      <div class="col-md-6">
-                        <%= f.button :submit, "Add to my calendar", class: "btn orange-btn d-flex justify-content-center mx-auto mt-2 mb-3 p-2" %>
+                      <div class="row justify-content-center">
+                        <div class="col-md-6">
+                          <%= f.button :submit, "Add to my calendar", class: "btn orange-btn d-flex justify-content-center mx-auto mt-2 mb-3 p-2" %>
+                        </div>
                       </div>
-                    </div>
-                  <% end %>
+                    <% end %>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
 
   </div>

@@ -18,7 +18,7 @@ export default class extends Controller {
       if (data.success){
         Swal.fire({
           title: 'Success',
-          text: 'Recipe succesfully added to your Favorites ;)',
+          text: 'Recipe succesfully added to your favorites ;)',
           icon: 'success'
         });
       }
