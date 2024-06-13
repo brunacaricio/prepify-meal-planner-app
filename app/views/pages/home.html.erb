@@ -11,7 +11,7 @@
         <div class="col-2">
           <% if user_signed_in? %>
             <% if current_user.photo.attached? %>
-              <%= cl_image_tag current_user.photo.key, class: "avatar" %>
+              <%= cl_image_tag current_user.photo.key, class: "avatar " %>
             <% else %>
               <i class="fa-solid fa-bowl-food justify-content-center"></i>
             <% end %>
@@ -38,7 +38,7 @@
 
       <div class ="hero">
 
-        <%# <%= image_tag 'fork.svg' %>
+        <%# <%= image_tag 'handfork.svg' %>
 
         <div class="homecard add-recipe-card d-flex align-items-center justify-content-center bg-white">
           <% if user_signed_in? && !current_user.planned_meals.find_by(date: Date.today).nil? %>
@@ -130,7 +130,7 @@
             <%= link_to recipe_path(recipe), class: 'd-flex flex-column align-items-center justify-content-center w-100 h-100 text-decoration-none', style: "color: white;" do %>
               <img src="<%= recipe.image %>" class="card-image-scroll" alt="<%= recipe.title %>">
               <div class="card-content">
-                <%= recipe.title %>
+                <b><%= recipe.title %></b>
                 <p class="card-text fw-light"><%= recipe.category.split(', ')[0].capitalize %></p>
               </div>
             <% end %>
