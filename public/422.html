@@ -1,67 +1,121 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>The change you wanted was rejected (422)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+  <head>
+    <title>Error 422 - Unprocessable Content</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+    <style>
+      body {
+        background-color: rgb(241, 241, 241);
+      }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+      .error-image {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+      }
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
+      .header-pages {
+        height: 100px;
+        width: 100%;
+        color: white;
+        background-color: #EA9F0E;
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
 
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-  </style>
-</head>
+    .header-pages-home {
+      height: 100px;
+      width: 100%;
+      color: white;
+      background-color: #EA9F0E;
+      border-bottom-left-radius: 25px;
+      border-bottom-right-radius: 25px;
+      display: flex;
+      font-size: 40px;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/422.html -->
-  <div class="dialog">
-    <div>
-      <h1>The change you wanted was rejected.</h1>
-      <p>Maybe you tried to change something you didn't have access to.</p>
+    .header-logo {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .header-title {
+      font-size: 30px;
+      font-family: "Pacifico", cursive;
+      font-weight: 100;
+      font-style: normal;
+    }
+
+    .box {
+      height: 100px;
+      width: 100%;
+      opacity: 0.8;
+      padding: 10px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dialog {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      text-align: center;
+      font-family: "Nunito", "Helvetica", "sans-serif";
+      font-size: 12px;
+    }
+
+    .orange-btn {
+      background-color: #EA9F0E;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    </style>
+  </head>
+
+  <body>
+    <!-- This file lives in public/422.html -->
+    <div class="header-pages-home">
+      <img src="/images/prepify-bowl.svg" alt="Prepify Bowl" class="header-logo">
+      <h3 class="header-title"><b>Prepify</b></h3>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
-</body>
+    <div class="dialog">
+      <img src="/images/422_error.png" alt="Error message 404" class="error-image">
+      <div class="box">
+        <h3 class="text-dark"><b>Oh Snap! Error 422.</b></h3>
+        <h4 class="text-dark"><b>We couldn't process your request.<br class="mt-5">Check your info or come back later.</b></h4>
+      </div>
+      <a href="#" class="btn orange-btn" onclick="goBack()">Go Back</a>
+    </div>
+
+    <script>
+      function goBack() {
+        window.history.back();
+      }
+    </script>
+  </body>
+
+
+
 </html>
