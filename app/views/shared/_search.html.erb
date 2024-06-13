@@ -3,9 +3,10 @@
     <div class="search-bar col-12 col-lg-4 my-3 mr-2">
       <%= form_with url: recipes_path, method: :get, class: "d-flex search-form" do %>
         <%= text_field_tag :query,
-              params[:query],
+              nil,
               class: "form-control",
-              placeholder: "Search recipe"
+              placeholder: "Search for a recipe",
+              value: ""
           %>
         <%= button_tag(type: "submit", class: "search-button btn orange-btn mx-2") do %>
           <i class="fa-solid fa-magnifying-glass"></i>
