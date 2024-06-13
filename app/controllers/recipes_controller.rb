@@ -5,7 +5,7 @@ class RecipesController < ApplicationController
     if params[:query].present?
       @recipes = Recipe.global_search(params[:query])
     end
-
+    @query = params[:query]
     @planned_meal = PlannedMeal.new
   end
 

@@ -5,7 +5,13 @@
   <%= render 'shared/search' %>
   <div class="row">
       <div class="col-sm-12">
+        <% if @query.empty? %>
           <h5 class ="pt-3 pb-3"><b> All recipes </b></h5>
+        <% elsif !@query.empty? && @recipes.length > 1 %>
+          <h5 class ="pt-3 pb-3">Search results for: <b> <%=@query %> </b></h5>
+        <% elsif !@query.empty? && @recipes.length == 1 %>
+          <h5 class ="pt-3 pb-3">There is only one corresponding search result for: <b> <%=@query %> </b></h5>
+        <% end %>
       </div>
   </div>
   <% if @recipes.empty? %>
