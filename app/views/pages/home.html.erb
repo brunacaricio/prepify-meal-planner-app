@@ -32,7 +32,7 @@
     <%= render "shared/search" %>
 
 
-    <div class="bigcard col-12 col-lg-8 mb-3 mt-3">
+    <div class="bigcard col-12 col-lg-8 mt-3">
 
       <h3 class="mb-3"><%= link_to 'Today', planned_meals_path, class: 'subparagraph' %></h3>
 
@@ -107,20 +107,23 @@
       </div>
 
     </div>
+ </div>
+</div>
 
-    <div class="col-12 col-lg-6 justify-content-center d-flex flex-column">
-      <div class="d-flex justify-content-between align-items-center">
-        <h6 class="mt-2"><b>Search by category</b></h6>
-        <%= link_to 'See all', recipes_path, class: 'btn btn-link text-dark text-decoration-none ml-auto fw-light mt-2' %>
-      </div>
-      <div class="category-scroll" data-controller="ajax-search">
-        <% @categories.each do |category|  %>
-          <div class="category-button" data-ajax-search-target="input"><%= link_to "#{category}", root_path(categ: "#{category}", anchor: "recipes-list"), class: params[:categ] == category ? "card-category card-category-active" : "card-category" %></div>
-        <% end %>
-      </div>
+<div class="search-by-cat col-12 col-lg-6 justify-content-center d-flex flex-column mb-2">
+  <div class="col 12 d-flex justify-content-between align-items-center">
+    <h6><b>Search by category</b></h6>
+    <%= link_to 'See all', recipes_path, class: 'btn btn-link text-dark text-decoration-none ml-auto fw-light p-0' %>
+  </div>
+  <div class="col 12 d-flex justify-content-between align-items-center">
+    <div class="category-scroll" data-controller="ajax-search">
+      <% @categories.each do |category|  %>
+        <div class="category-button" data-ajax-search-target="input"><%= link_to "#{category}", root_path(categ: "#{category}", anchor: "recipes-list"), class: params[:categ] == category ? "card-category card-category-active" : "card-category" %></div>
+      <% end %>
     </div>
   </div>
 </div>
+
 <div class="col-12 col-lg-6 justify-content-center">
   <div class="row">
     <div class="col-12">
