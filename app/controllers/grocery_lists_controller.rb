@@ -24,7 +24,6 @@ class GroceryListsController < ApplicationController
     redirect_to grocery_list_path
   end
 
-
   private
 
   def grocery_list_params
