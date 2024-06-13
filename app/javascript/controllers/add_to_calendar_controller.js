@@ -22,7 +22,7 @@ export default class extends Controller {
       if (data.success){
         const Toast = Swal.mixin({
           toast: true,
-          position: "top-end",
+          position: "top",
           showConfirmButton: false,
           timer: 1500,
           timerProgressBar: true,
