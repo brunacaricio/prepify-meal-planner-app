@@ -6,33 +6,34 @@
   <div id="booking-form" class="p-3 container">
     <p></p>
     <p>Select a <b>range of dates</b> below:</p>
-    <%= simple_form_for [@grocery_list] do |f| %>
-        <%= f.input :start_date, as: :string, input_html: { data: { controller: "grocery-list-datepicker" } }, label: false, placeholder: 'Select these dates' %>
+    <%= simple_form_for [@grocery_list], html: { data: { controller: "grocery-list-form",action:"submit->grocery-list-form#validate" } } do |f| %>
+        <%= f.input :start_date, as: :string, input_html: { data: { controller: "grocery-list-datepicker", grocery_list_form_target: "startDate" } },required: true, label: false, placeholder: 'Select these dates' %>
         <%= f.button :submit, "Generate my list", class: "btn orange-btn-larger mb-3" %>
     <% end %>
       <% if @aisle_hash.nil? || @aisle_hash.empty?%>
-      <div class="box">
-        <p class="fw-semibold mt-3">No items yet.</p>
-        <p>Choose dates above or plan meals!</p>
-      </div>
+        <div class="box">
+          <p class="fw-semibold mt-3">No items yet.</p>
+          <p>Choose dates above or plan meals!</p>
+        </div>
 
-    <% else %>
-      <% @aisle_hash.sort.each do |key,items| %>
-        <p class= "pt-3"><b><%= key %></b></p>
-        <% items.sort.each do |item| %>
-          <% ingr = Ingredient.find_by(id: item.ingredient_id) %>
-          <% recip_ingr = RecipeIngredient.find_by(id: item.recipe_ingredient_id) %>
-          <div class="list d-flex justify-content-center align-items-center">
-            <%= simple_form_for [@grocery_list, item], data: {controller: "checked-list"} do |f| %>
-              <%= f.input :bought, as: :boolean, label: false,boolean_style: :nested, input_html: {class: 'orange-checkbox', data: {action: "click->checked-list#bought"}} %>
-            <% end %>
-              <li class="ingredient-card mt-2" style="width:95%">
-                <div class="grid"><h6><%= ingr.name.capitalize %></h6></div>
-                <div class="grid"><h6><%= item.total_amount %> <%= recip_ingr.unit %></h6></div>
-              </li>
-          </div>
+      <% elsif !(@aisle_hash.nil? || @aisle_hash.empty?) && !(@grocery_list.start_date.nil?)  %>
+        <small><p class="mt-3">List from:  <b><%= @grocery_list.start_date.strftime("%d/%m") %></b>, to: <b> <%= @grocery_list.end_date.strftime("%d/%m")  %></b></p></small>
+        <% @aisle_hash.sort.each do |key,items| %>
+          <p class= "pt-3"><b><%= key %></b></p>
+          <% items.sort.each do |item| %>
+            <% ingr = Ingredient.find_by(id: item.ingredient_id) %>
+            <% recip_ingr = RecipeIngredient.find_by(id: item.recipe_ingredient_id) %>
+            <div class="list d-flex justify-content-center align-items-center">
+              <%= simple_form_for [@grocery_list, item], data: {controller: "checked-list"} do |f| %>
+                <%= f.input :bought, as: :boolean, label: false,boolean_style: :nested, input_html: {class: 'orange-checkbox', data: {action: "click->checked-list#bought"}} %>
+              <% end %>
+                <li class="ingredient-card mt-2" style="width:95%">
+                  <div class="grid"><h6><%= ingr.name.capitalize %></h6></div>
+                  <div class="grid"><h6><%= item.total_amount %> <%= recip_ingr.unit %></h6></div>
+                </li>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
     <% end %>
   </div>
 </div>

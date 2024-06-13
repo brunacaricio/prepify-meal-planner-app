@@ -16,7 +16,7 @@ class GroceryListsController < ApplicationController
 
   def update
     @grocery_list = current_user.grocery_lists.last
-    if @grocery_list.update!(grocery_list_params)
+    if @grocery_list.update!(grocery_list_params) && !@grocery_list.end_date.nil?
       grocery_list_items(@grocery_list.start_date, @grocery_list.end_date)
     else
       flash.now[:alert] = "Oops, something went wrong !"
