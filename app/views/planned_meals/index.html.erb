@@ -11,7 +11,9 @@
         <hr>
         <% group = @planned_meals.where(date: day) %>
         <% if group.empty? %>
-          <%= link_to '+', recipes_path, class: 'btn orange-btn-round text-light' %>
+          <%= link_to recipes_path,  class: "plus-button" do %>
+            <%= image_tag 'plus.svg' %>
+            <% end %>
         <% else %>
           <div class="grid-planned-meal mb-3 justify-content-center">
             <% group.each do |planned| %>
