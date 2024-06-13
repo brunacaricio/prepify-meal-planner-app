@@ -3,10 +3,8 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :recipes, only: %i[index show] do
-
     resources :favorites, only: [:create]
     resources :planned_meals, only: [:create]
-
   end
 
   resources :grocery_lists do

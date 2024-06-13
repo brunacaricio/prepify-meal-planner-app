@@ -43,11 +43,15 @@
         <div class="homecard add-recipe-card d-flex align-items-center justify-content-center bg-white">
           <% if user_signed_in? && !current_user.planned_meals.find_by(date: Date.today).nil? %>
             <% recipe = current_user.planned_meals.find_by(date: Date.today).recipe %>
-            <img src="<%= recipe.image %>" class="homecard-image" alt="<%= recipe.title %>">
-            <div class="homecard-content">
-              <h6 class= "font-weight-bold"><b><%= link_to recipe.title, recipe_path(recipe), class: "card-title" %></b></h6>
-              <p class="card-text font-weight-light"><%= recipe.category.split(', ')[0].capitalize %></p>
-            </div>
+            <%= link_to recipe_path(recipe), class: 'd-flex flex-column align-items-center justify-content-center w-100 h-100 text-decoration-none', style: "color: white;" do %>
+              <img src="<%= recipe.image %>" class="homecard-image" alt="<%= recipe.title %>">
+              <div class="homecard-content">
+                <h6 class= "font-weight-bold">
+                  <b><%= recipe.title %></b>
+                </h6>
+                <p class="card-text font-weight-light"><%= recipe.category.split(', ')[0].capitalize %></p>
+              </div>
+            <% end %>
 
             <i id="plus-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%=recipe.id%>"><%= image_tag 'plus.svg', class: "add-button w-12" %></i>
               <div class="modal fade" id="staticBackdrop<%=recipe.id%>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -60,7 +64,7 @@
                     <div class="button-container">
                         <div data-controller="add-to-favorites">
                           <% if user_signed_in? && current_user.favorites.exists?(recipe_id: recipe.id) %>
-                            <button type="button" data-add-to-favorites-target="button" class="btn btn-outline-success d-flex justify-content-center mx-auto mt-3 p-1" disabled> Already saved in my favorites! </button>
+                            <button type="button" data-add-to-favorites-target="button" class="btn btn-outline-success d-flex justify-content-center mx-auto mt-3 p-1" disabled> Saved in favorites </button>
                           <% else %>
                             <%= form_with url: recipe_favorites_path(recipe_id: recipe.id), data: {add_to_favorites_target: "form", action:"submit->add-to-favorites#send"}, method: :post, class: "d-inline" do %>
                             <button type="submit" class="btn orange-btn d-flex justify-content-center mx-auto mt-2 p-2" data-add-to-favorites-target="button">
@@ -123,11 +127,13 @@
       <div class="recipe-cards" id="recipes-list">
         <% @recipes.each do |recipe| %>
           <div class="card-scroll">
-            <img src="<%= recipe.image %>" class="card-image-scroll" alt="<%= recipe.title %>">
-            <div class="card-content">
-              <%= link_to recipe.title, recipe_path(recipe), class: "card-title fw-bold" %>
-              <p class="card-text fw-light"><%= recipe.category.split(', ')[0].capitalize %></p>
-            </div>
+            <%= link_to recipe_path(recipe), class: 'd-flex flex-column align-items-center justify-content-center w-100 h-100 text-decoration-none', style: "color: white;" do %>
+              <img src="<%= recipe.image %>" class="card-image-scroll" alt="<%= recipe.title %>">
+              <div class="card-content">
+                <%= recipe.title %>
+                <p class="card-text fw-light"><%= recipe.category.split(', ')[0].capitalize %></p>
+              </div>
+            <% end %>
             <i id="plus-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%=recipe.id%>"><%= image_tag 'plus.svg', class: "add-button w-12" %></i>
             <div class="modal fade" id="staticBackdrop<%=recipe.id%>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
