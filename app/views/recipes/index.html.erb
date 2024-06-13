@@ -15,11 +15,12 @@
       </div>
   </div>
   <% if @recipes.empty? %>
-    <div class="row">
-      <div class="col-sm-12">
-        <p>Oops, no recipe was found with your keyword.</p>
-        <p>Try a different one!</p>
-      </div>
+    <div class="no-favorites-container">
+      <%= image_tag "no-favorites.png", alt: "no favorites", class: "no-favorites-image" %>
+    </div>
+    <div class="message text-center">
+      <span><h5>Oops, no recipe was found with your keyword.</h5></span>
+      <span><h5>Try a different one!</h5></span>
     </div>
   <% else %>
     <div class = "search-grid">
