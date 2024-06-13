@@ -16,14 +16,16 @@
           <div class="grid-planned-meal mb-3 justify-content-center">
             <% group.each do |planned| %>
               <div class="card-planned-meal">
-                <img src="<%= planned.recipe.image %>" class="card-image-planned-meal" alt="<%= planned.recipe.title %>">
-                <div class="card-content-planned-meal">
-                  <%= link_to planned.recipe.title, recipe_path(planned.recipe), class: "card-title" %>
-                  <p class="card-text"><%= planned.recipe.category.split(', ')[0] %></p>
-                </div>
-                  <%= link_to planned_meal_path(planned.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "delete-button" do %>
-                    <%= image_tag 'delete.svg' %>
-                  <% end %>
+                <%= link_to recipe_path(planned.recipe), class: 'd-flex flex-column align-items-center justify-content-center w-100 h-100 text-decoration-none', style: "color: white;" do %>
+                  <img src="<%= planned.recipe.image %>" class="card-image-planned-meal" alt="<%= planned.recipe.title %>">
+                  <div class="card-content-planned-meal">
+                    <%= planned.recipe.title %>
+                    <p class="card-text"><%= planned.recipe.category.split(', ')[0] %></p>
+                  </div>
+                <% end %>
+                <%= link_to planned_meal_path(planned.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "delete-button" do %>
+                  <%= image_tag 'delete.svg' %>
+                <% end %>
               </div>
             <% end %>
           </div>

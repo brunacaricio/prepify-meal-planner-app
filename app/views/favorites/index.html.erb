@@ -15,11 +15,13 @@
       <% @favorites.each do |favorite| %>
 
         <div class="showcard">
-          <img src="<%= favorite.recipe.image %>" class="showcard-image" alt="<%= favorite.recipe.title %>">
-          <div class="card-content">
-            <h6><b><%= link_to favorite.recipe.title.capitalize, recipe_path(favorite.recipe), class: "card-title pr-3" %></b></h6>
-            <p class="card-text"><%= favorite.recipe.category.split(', ')[0] %></p>
-          </div>
+          <%= link_to recipe_path(favorite.recipe), class: 'd-flex flex-column align-items-center justify-content-center w-100 h-100 text-decoration-none', style: "color: white;" do %>
+            <img src="<%= favorite.recipe.image %>" class="showcard-image" alt="<%= favorite.recipe.title %>">
+            <div class="card-content">
+              <h6><b><%= favorite.recipe.title.capitalize %></b></h6>
+              <p class="card-text"><%= favorite.recipe.category.split(', ')[0] %></p>
+            </div>
+          <% end %>
           <%= image_tag 'plus.svg', class: "add-button" %>
           <%= link_to favorite_path(favorite), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "delete-button-favorites" do %>
             <%= image_tag 'delete.svg' %>
