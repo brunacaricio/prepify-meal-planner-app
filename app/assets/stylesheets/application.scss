@@ -19,16 +19,14 @@ body {
   overflow-y: auto;
   padding: 0;
   width: 100%;
-  background: image-url('background-blu.png');
+  background: image-url('background.png');
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
   font-family: $poppins;
   margin-bottom: 12vh;
-
 }
-
 
 .indexpage-title {
   display: flex;
