@@ -8,9 +8,11 @@
 
   <div class="favorite-grid pt-3">
     <% if @favorites.empty? %>
-    <span class="box">
-      <p class="mt-3">You don't have any favorite recipes yet!</p>
-    </span>
+    <div class="no-favorites-container">
+      <%= image_tag "no-favorites.png", alt: "no favorites", class: "no-favorites-image" %>
+    </div>
+    <span><h5>You don't have any favorites yet!</h5></span>
+
     <% else %>
       <% @favorites.each do |favorite| %>
 
