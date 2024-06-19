@@ -78,7 +78,7 @@
                           <%= simple_form_for [recipe, @planned_meal], data: { add_to_calendar_target: "form", action:"submit->add-to-calendar#send"} do |f| %>
                             <div class="row justify-content-center">
                               <div class="col-md-6 text-center">
-                                <%= f.input :date, as: :string, input_html: { id: "date", data: { controller: "datepicker", add_to_calendar_target: "input"}, class: "form-control text-center mx-auto w-50", placeholder: "Select a day" }, label: false %>
+                                <%= f.input :date, as: :string, input_html: { id: "date", data: { controller: "datepicker", add_to_calendar_target: "input"}, class: "form-control text-center mx-auto w-50", placeholder: "Select date" }, label: false %>
                               </div>
                             </div>
                             <div class="row justify-content-center">
@@ -101,30 +101,28 @@
             <% end %>
           <% end %>
         </div>
-
-        <%# <%= image_tag 'knife.svg' %>
-
       </div>
-
     </div>
  </div>
 </div>
 
-<div class="search-by-cat col-12 col-lg-6 justify-content-center d-flex flex-column mb-2">
-  <div class="col 12 d-flex justify-content-between align-items-center">
-    <h6><b>Search by category</b></h6>
-    <%= link_to 'See all', recipes_path, class: 'btn btn-link text-dark text-decoration-none ml-auto fw-light p-0' %>
-  </div>
-  <div class="col 12 d-flex justify-content-between align-items-center">
-    <div class="category-scroll" data-controller="ajax-search">
-      <% @categories.each do |category|  %>
-        <div class="category-button" data-ajax-search-target="input"><%= link_to "#{category}", root_path(categ: "#{category}", anchor: "recipes-list"), class: params[:categ] == category ? "card-category card-category-active" : "card-category" %></div>
-      <% end %>
+<div class="container d-flex justify-content-center">
+  <div class="search-by-cat col-12 col-lg-6 d-flex flex-column mb-2">
+    <div class="d-flex justify-content-between align-items-center">
+      <h6><b>Search by category</b></h6>
+      <%= link_to 'See all', recipes_path, class: 'btn btn-link text-dark text-decoration-none ml-auto fw-light p-0' %>
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="category-scroll" data-controller="ajax-search">
+        <% @categories.each do |category| %>
+          <%= link_to category, root_path(categ: category, anchor: "recipes-list"), class: params[:categ] == category ? "card-category card-category-active" : "card-category", data: { ajax_search_target: "input" } %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="col-12 col-lg-6 justify-content-center">
+<div class="col-12 col-lg-6 mx-lg-auto">
   <div class="row">
     <div class="col-12">
       <div class="recipe-cards" id="recipes-list">
@@ -148,7 +146,7 @@
                   <div class="button-container">
                       <div data-controller="add-to-favorites">
                         <% if user_signed_in? && current_user.favorites.exists?(recipe_id: recipe.id) %>
-                          <button type="button" data-add-to-favorites-target="button" class="btn btn-success d-flex justify-content-center mx-auto mt-3 p-1" disabled> Already saved in my favorites </button>
+                          <button type="button" data-add-to-favorites-target="button" class="btn btn-success d-flex justify-content-center mx-auto mt-3 p-1" disabled>Saved in my favorites</button>
                         <% elsif !user_signed_in? %>
                           <%= link_to new_user_session_path do %>
                             <button type="button" class="btn orange-btn d-flex justify-content-center mx-auto mt-3 p-2 mb-3">
@@ -169,7 +167,7 @@
                           <%= simple_form_for [recipe, @planned_meal], data: { add_to_calendar_target: "form", action:"submit->add-to-calendar#send"} do |f| %>
                             <div class="row justify-content-center">
                               <div class="col-md-6 text-center">
-                                <%= f.input :date, as: :string, input_html: { id: "date", data: { controller: "datepicker", add_to_calendar_target: "input"}, class: "form-control text-center mx-auto w-50", placeholder: "Select a day" }, label: false %>
+                                <%= f.input :date, as: :string, input_html: { id: "date", data: { controller: "datepicker", add_to_calendar_target: "input"}, class: "form-control text-center mx-auto w-50", placeholder: "Select date" }, label: false %>
                               </div>
                             </div>
                             <div class="row justify-content-center">
